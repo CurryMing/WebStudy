@@ -1,0 +1,25 @@
+body{
+    margin: 0;
+}
+
+.flex-container{
+    display: flex;
+    width: 500px;
+    height: 200px;
+}
+
+.box{
+    width: 60px;
+    height: 60px;
+    background-color: #eee;
+    text-align: center;
+    line-height: 60px;
+    border-radius: 4px;
+    box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.25);
+    font-size: 2em;
+}
+.A{background-color: #6DD98F; order: 1;}
+.B{background-color: #50A18E; align-self: flex-end;}
+.C{background-color: #F2D680;}
+.D{background-color: #F2916D;}
+.E{background-color: #F26E50;}

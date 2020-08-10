@@ -1,0 +1,54 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+div{
+    float: right;
+}
+
+.div2{
+    width: 200px;
+    height: 200px;
+    margin: 0 0 0 50px;
+}
+
+.div2 h3:nth-child(1){
+    width: 200px;
+    height: 200px;
+    background-color: teal;
+    margin-bottom: 50px;   
+}
+.div2 h3:nth-child(2){
+    text-align: center;
+    line-height: 200px;
+    font-size: 25px;
+    width: 200px;
+    height: 200px;
+    background-color: teal;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+    /* margin-top: 50px; */
+}
+
+.father{
+    width: 300px;
+    height: 300px;
+    background-color: brown;
+    margin-top: 10px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-100%,-50%);
+            /* 上右下左 */
+    padding: 0 0 0 10px;  
+    box-sizing: content-box;
+    float: left;
+}
+.son{
+    width: 50px;
+    height: 50px;
+    background-color: burlywood;
+    margin-top: 10px;
+    margin: 50px auto;  /*左右自动对齐，水平居中*/
+    box-shadow: 3px 3px 3px 3px rgba(0, 0, 0, 0.5);
+}

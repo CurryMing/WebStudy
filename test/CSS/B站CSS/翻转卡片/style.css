@@ -1,0 +1,38 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    display: flex;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+}
+.container{
+    width: 220px;
+    height: 516px;
+    position: relative;
+    perspective: 1000px;
+}
+.cover,.back{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    backface-visibility: hidden;
+    transition: transform 0.255s ease-in-out;
+}
+
+.cover{
+    transform: rotateY(0deg);
+}
+.container:hover .cover{
+    transform: rotateY(180deg);
+}
+
+.back{
+    transform: rotateY(-180deg);
+}
+.container:hover .back{
+    transform: rotateY(0deg);
+}

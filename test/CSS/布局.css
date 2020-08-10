@@ -1,0 +1,24 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+.main{
+    height: 200px;
+    width: 960px;
+    margin: 0px auto;
+    background-color: slategray;
+}
+
+.main div{
+    text-align: center;
+    line-height: 200px;
+    font-size: 25px;
+    height: 200px;
+    width: 232.5px;
+    background-color: brown;
+    margin-right: 10px;
+    float: left;
+}
+.main .noMargin{ 
+    margin-right: 0 ;
+}

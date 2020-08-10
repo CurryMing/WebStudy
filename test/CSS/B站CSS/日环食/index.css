@@ -1,0 +1,64 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    background-color: deepskyblue;
+    animation: bbg 10s linear infinite;
+}
+
+.sun{
+    width: 50px;
+    height: 50px;
+    background-color: floralwhite;
+    border-radius: 100%;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+    z-index: 1;
+    overflow: hidden;
+}
+
+.light{
+    width: 55px;
+    height: 55px;
+    background-color: floralwhite;
+    border-radius: 100%;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+    z-index: -1;
+    filter: blur(20px);
+}
+
+.sun::before{
+    content: "";
+    position: absolute;
+    left: -5px;
+    top: -5px;
+    right: -5px;
+    bottom: -5px;
+    background-color: black;
+    transform: translate(100%);
+    border-radius: 100%;
+    z-index: 2;
+    animation: shi 10s linear infinite;
+}
+
+@keyframes shi{
+    100%{
+        transform: translate(-100%);
+    }
+}
+
+@keyframes bbg{
+    50%{
+        background-color: black;
+    }
+    100%{
+        background-color: red;
+    }
+}

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            position: relative;
+        }
+        /*静态定位，对于边偏移是无效的，作用：清除定位*/
+        .static{
+            width: 100px;
+            height: 100px;
+            background-color: cornflowerblue;
+            position: static;   
+            left: 100px;
+            top: 100px;
+        }
+        /* 相对定位: 仍然霸占着位置*/
+        .relative{
+            width: 100px;
+            height: 100px;
+            background-color: darkolivegreen;
+            color: aliceblue;
+            position: relative;
+            left: 100px;
+            top: 20px;
+        }
+        /* 绝对定位： 不会霸占着位置，在下面的盒子会上来*/
+        .father{
+            width: 500px;
+            height: 300px;
+            background-color: grey;
+            /* margin: 100px 100px;     22555 */
+            position: relative;
+            /* left: 50px;
+            top: 50px; */
+        }
+        /* 固定定位：不占位置，位置固定不变 ，一定要写宽和高*/
+
+        .son{
+            width: 100px;
+            height: 100px;
+            background-color: lightskyblue;
+            position: absolute;
+            left: 100px;
+            top: 100px;
+        }
+        .rect{
+            width: 600px;
+            height: 100px;
+            background-color: black;
+            position: relative;
+        }
+        .rect_son{
+            width: 50px;
+            height: 50px;
+            background-color: aliceblue;
+            position: absolute;
+            left: 50%;
+            /* transform: translate(-50%,0%); */
+            margin-left: -25px;
+        }
+    </style>
+</head>
+<body>
+    <div class="static">static</div>
+    <div class="relative">relative</div>
+    <!-- <div class="absolute_1">absolute_1</div>
+    <div class="absolute_2">absolute_2</div> -->
+    <div class="father">
+        father
+        <div class="son">son</div>
+    </div>
+    <div class="rect">
+        <div class="rect_son"></div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,61 @@
+/*清除内外边距*/
+*{
+	margin: 0;
+	padding: 0;
+}
+body{
+	background-color: #000;
+}
+/*去掉连接下划线*/
+a{
+	text-decoration: none;
+	position: absolute;
+	/*在屏幕中间*/
+	left: 50%;  
+    top: 50%;
+    transform: translate(-50%,-50%);
+    font-size: 50px;
+    background: linear-gradient(90deg,#03a9f4,#f441a5,#ffeb3b,#03a9f4);
+    background-size: 400%;
+    width: 400px;
+    height: 100px;
+    text-align: center;
+    line-height: 100px;
+    color: #fff;
+    text-transform: uppercase;
+    /*制作成胶囊状  圆角*/
+    border-radius: 50px;
+    z-index: 1;
+}
+
+a::after{
+	content: "";
+	position: absolute;
+	left: -5px;
+	right: -5px;
+	top: -5px;
+	bottom: -5px;
+	background: linear-gradient(90deg,#03a9f4,#f441a5,#ffeb3b,#03a9f4);
+    background-size: 400%;
+    border-radius: 50px;
+    /*滤镜模糊*/
+    filter: blur(50px);
+    /*调整层级关系*/
+    z-index: -1;
+}
+
+a:hover{
+	animation: sun 4s infinite;
+}
+
+a:hover::after{
+	animation: sun 4s infinite;
+}
+
+/*动画*/
+@keyframes sun{
+	100%{
+		background-position: -400% 0;
+	}
+
+}

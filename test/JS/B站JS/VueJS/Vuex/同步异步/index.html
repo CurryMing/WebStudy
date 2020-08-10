@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .app{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            flex: 0 0 200px;
+        }
+    </style>
+</head>
+<body>
+    <div class="app">
+        <input type="button" value="-" @click="subtract">
+        <h1>{{ num }}</h1>
+        <input type="button" value="+" @click="add">
+        <input type="button" value="asyn" @click="asyn">
+    </div>
+    <script src="../../../../../lib/vue.js"></script>
+    <script src="../../../../../lib/vuex.js"></script>
+    <script>
+        const store = new Vuex.Store({
+            state: {
+                count: 0,
+            },
+            mutations: {
+                add: state => state.count++,
+                subtract: state => state.count--,
+            },
+            actions: {
+                asyn(){
+                    setTimeout(() => {
+                        console.log("asyn")
+                    },2000);
+                },
+            }
+        });
+        new Vue({
+            el: ".app",
+            computed: {
+                num(){
+                    return store.state.count;
+                }
+            },
+            methods: {
+                //同步
+                add(){
+                    store.commit("add")
+                },
+                subtract(){
+                    store.commit("subtract")
+                },
+                //异步
+                asyn(){
+                    store.dispatch("asyn")
+                },
+            }
+        });
+    </script>
+</body>
+</html>

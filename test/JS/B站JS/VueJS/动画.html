@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .h3Ani-enter,
+        .h3Ani-leave-to{
+            opacity: 0;
+            transform: translateX(150px);
+        }
+        .h3Ani-enter-active,
+        .h3Ani-leave-active{
+            transition: all 0.25s ease-out;
+        }
+
+        .box1{
+            width: 50px;
+            height: 50px;
+            background-color: mediumpurple;
+            border-radius: 5px;
+            box-shadow: 0 3px 12px rgba(0, 0, 0, 0.35);
+        }
+    </style>
+</head>
+<body>
+    <div class="app">
+        <input type="button" value="animate!" @click="show=!show">
+        <!-- 动画别名 name -->
+        <transition name="h3Ani">
+            <h3 v-show="show">Unity && oMing</h3>
+        </transition>
+    </div>
+    
+    <!-- 钩子函数 实现半场动画 -->
+    <div class="box">
+        <input type="button" value="animate~" @click="isAnimated=true" :disabled="isAnimated">
+        <transition
+            v-on:before-enter="beforeEnter"
+            v-on:enter="enter"
+            v-on:after-enter="afterEnter"
+            v-on:enter-cancelled="enterCancelled"
+        >
+            <!-- v-on:before-leave="beforeLeave"
+            v-on:leave="leave"
+            v-on:after-leave="afterLeave"
+            v-on:leave-cancelled="leaveCancelled" -->
+            <div class="box1" v-show="isAnimated"></div>
+        </transition>
+    </div>
+
+    <script src="../.../../../../lib/vue.js"></script>
+    <script>
+        new Vue({
+            el: ".app",
+            data: {
+                show: true,
+            },
+            methods: {
+            },
+        })
+        new Vue({
+            el: ".box",
+            data: {
+                isAnimated: false,
+            },
+            methods: {
+                // --------
+                // 进入中
+                // --------
+                // 动画入场之前，动画尚未开始
+                beforeEnter: function (el) {
+                    el.style.transform = "translate(0,0)"
+                },
+                // 当与 CSS 结合使用时 回调函数 done 是可选的
+                enter: function (el, done) {
+                    el.offsetHeight
+                    el.style.transform = "translate(200px,200px)"
+                    el.style.transition = "all 1s ease"
+                    done()
+                },
+                afterEnter: function (el) {
+                    this.isAnimated = false
+                },
+                enterCancelled: function (el) {
+                    
+                },
+
+                // --------
+                // 离开时
+                // --------
+                beforeLeave: function (el) {
+                    // ...
+                },
+                // 当与 CSS 结合使用时
+                // 回调函数 done 是可选的
+                leave: function (el, done) {
+                    // ...
+                    done()
+                },
+                afterLeave: function (el) {
+                    // ...
+                },
+                // leaveCancelled 只用于 v-show 中
+                leaveCancelled: function (el) {
+                    // ...
+                }
+            },
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" href="style.css">
+	<script src="app.js"></script>
+</head>
+<body>
+
+	<input type="button" value="隐藏" id="showHidebtn" onclick="showHide()">
+	<input type="button" value="夜晚" id="dayNightBtn" onclick="ShowDayNight()">
+
+	<input type="button" value="变粉" id="yellowBtn"   onclick="ChangeColor('#EE82EE')">
+	<input type="button" value="变绿" id="redBtn"      onclick="ChangeColor('#90EE90')">
+	<input type="button" value="变蓝" id="blueBtn"     onclick="ChangeColor('#337ab7')">
+
+	<input type="button" value="alert事件" id="alertBtn">
+
+	<div id="div1" onmouseover="ChangeScale('200px','200px')" onmouseout="ChangeScale('100px','100px')"></div>
+	
+	<input type="checkbox" name="全选" id="allCheck"> <br>
+	<input type="checkbox" name="" id="c1">
+	<input type="checkbox" name="" id="c2">
+	<input type="checkbox" name="" id="c3">
+	<input type="checkbox" name="" id="c4">
+	<input type="checkbox" name="" id="c5">
+
+	<div class="aiguo">爱国</div>
+
+	<input type="button" value="绑定" id="BangDing">
+
+	<button>click</button>
+
+	<input type="text" id="txt">
+
+	<script>
+		var oTxt = document.getElementById("txt");
+		function Person(){
+			this.age = 0;
+
+			setInterval(() => {
+				this.age++; // 这里的`this`正确地指向person对象
+				oTxt.value = this.age;
+			}, 1000);
+		}
+
+		var p = new Person();
+	</script>
+	<script src="test.js"></script>
+</body>
+</html>

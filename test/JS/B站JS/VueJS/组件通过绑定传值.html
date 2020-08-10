@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 通过 “绑定” 传值 -->
+    <div class="app">
+        <!-- 在 父对象 中通过 v-bind: 传递 -->
+        <o-com :parent-msg="msg"></o-com>
+    </div>
+
+    <script src="../../../lib/vue.js"></script>
+    <script>
+        // app 实例
+        new Vue({
+            el: ".app",
+            data: {
+                msg: "app实例 的数据"
+            },
+            components: {
+                // 在注册 组件 的时候使用 “驼峰命名法”
+                // 在使用组件的时候就要使用 “短横线分割命名法”（o-com）
+                oCom: {
+                    data: function(){
+                        return {
+                            com1file: {title: "私有组件",content: "com1"}
+                        }
+                    },
+                    // 组件中的 props 中的数据，都是通过父组件传递过来的
+                    // 在 子对象 中通过 自定义名称parentmsg接收
+                    props: ["parentMsg"],
+                    template: "<h1>这是私有的组件---{{ parentMsg }}---{{ com1file }}</h1>"
+                }
+            }
+        })
+    </script>
+</body>
+</html>

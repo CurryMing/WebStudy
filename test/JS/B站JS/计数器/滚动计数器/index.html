@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="app">
+        <button @click="subtract" :disabled="isAnimating">-</button>
+        <span :class="{before: isBefore, after: isAfter}" :data-before="countBefore" :data-after="countAfter">{{ count }}</span>
+        <button @click="add" :disabled="isAnimating">+</button>
+    </div>
+    <script src="./../../../../lib/vue.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>

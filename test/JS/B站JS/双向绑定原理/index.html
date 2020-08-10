@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 50vh;
+            flex-direction: column;
+        }
+        #txt_id{
+            outline: none;
+        }
+    </style>
+</head>
+<body>
+    <h1>极简版的双向绑定</h1>
+    <input type="text" id="txt_id">
+    <p id="p1"></p>
+    <script>
+        var xx_Obj = {};
+        Object.defineProperty(xx_Obj,'xx_val',{
+            get:function(){
+
+            },
+            set:function(_n){
+                document.getElementById("txt_id").value = _n;
+                document.getElementById("p1").innerHTML = _n;
+            }
+        });
+
+        document.addEventListener("keyup",function(e){
+            // console.log(e.target);
+            xx_Obj.xx_val = e.target.value;
+        });
+    </script>
+</body>
+</html>

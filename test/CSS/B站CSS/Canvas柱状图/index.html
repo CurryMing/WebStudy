@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style type="text/css">
+        html,body{
+            margin: 0;
+            padding: 0;
+        }
+        main{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background-color: #e0e3ed;
+        }
+        canvas{
+            border-radius: 8px;
+            box-shadow: 0 0 18px rgba(0, 0, 0, 0.2);
+        }
+    </style>
+</head>
+<body onload="draw();">
+    <main>
+        <canvas width = "600" height = "300" id = "bar-chart";></canvas>
+    </main>
+    <script type="text/javascript">
+        function draw(){
+            var canvas = document.getElementById("bar-chart");
+            var ctx = canvas.getContext("2d");
+            drawBar(ctx,300,150,14,80,60,5);
+        }
+        function drawBar(ctx,x,y,width,height1,height2,radius){
+            ctx.beginPath();
+            //画上半部分，四条边，两个圆角
+            ctx.moveTo(x,y);
+            ctx.lineTo(x,y - height1 + radius);
+            ctx.arcTo(x,y - height1,x + radius,y - height1,radius);
+            ctx.lineTo(x + width - radius,y-height1);
+            ctx.arcTo(x + width,y - height1,x + width,y - height1 + radius,radius);
+            ctx.lineTo(x + width,y);
+            ctx.lineTo(x,y);
+            ctx.fillStyle = "#341F97";
+            ctx.fill();
+            ctx.stroke();
+        }
+    </script>
+</body>
+</html>

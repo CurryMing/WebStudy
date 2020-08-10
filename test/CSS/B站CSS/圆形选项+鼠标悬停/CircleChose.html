@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>圆形悬停效果</title>
+	<style>
+		.main{
+			width: 100%;
+			height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+		}
+		.item{
+			position: relative;
+			width: 389px;
+			height: 389px;
+			margin: 5px 5px;
+			background: url(images/Tank!.jpg) no-repeat;
+			border-radius: 50%;
+			box-shadow: inset 0 0 0 25px rgba(255,255,255,0.6),0 1px 2px rgba(0,0,0,0.1);
+			transition: all .25s ease-in-out;
+		}
+		.item:nth-child(2){
+			background: url(images/SpaceShooter.jpg) no-repeat;
+		}
+		.item:nth-child(3){
+			background: url(images/2DRoguelike.jpg) no-repeat;
+		}
+		.item:nth-child(4){
+			background: url(images/SurvivalShooter.jpg) no-repeat;
+		}
+
+
+        .info{
+        	opacity: 0;
+        	transform: scale(0);
+        	position: absolute;
+        	width: 100%;
+        	height: 100%;
+        	background: rgba(63,147,147,0.8);
+        	border-radius: 50%;
+        	text-align: center;
+        	transition: all .25s ease-in-out;
+        }
+        .info h3{
+        	height: 140px;
+        	font-size: 30px;
+        	color: #fff;
+        	margin: 0 30px;
+        	padding-top: 80px;
+        	text-transform: uppercase; 
+        }
+        .info p{
+        	opacity: 0;
+        	font-size: 20px;
+        	color: #fff;
+        	font-style: italic;
+        	margin: 0 30px;
+        	padding-top: 10px;
+        	border-top: 1px solid rgba(255,255,255,0.5);
+            transition: all .25s ease-in-out .25s;  
+        }
+        .info a{
+        	display: block;
+        	color: #fff;
+        	font-style: normal;
+        }
+
+        .item:hover{
+        	box-shadow: inset 0 0 0 1px rgba(255,255,255,.1),0 1px 2px rgba(0,0,0,0.1);
+        }
+        .item:hover .info{
+        	opacity: 1;
+        	transform: scale(1);
+        }
+        .item:hover .info p{
+        	opacity: 1;
+        }
+        .info a:hover{
+            color: #fff222;
+        }
+
+
+	</style>
+</head>
+<body>
+	<div class="main">
+		<div class="item">
+			<div class="info">
+				<h3>TANK</h3>
+                    <p>
+                    	Made with Unity <a href="#">view on more</a>
+                    </p>
+			</div>
+		</div>
+		<div class="item">
+			<div class="info">
+				<h3>SpaceShooter</h3>
+                    <p>
+                    	Made with Unity <a href="#">view on more</a>
+                    </p>
+			</div>
+		</div>
+		<div class="item">
+			<div class="info">
+				<h3>2DRoguelike</h3>
+                    <p>
+                    	Made with Unity <a href="#">view on more</a>
+                    </p>
+			</div>
+		</div>
+		<div class="item">
+			<div class="info">
+				<h3>SurvivalShooter</h3>
+                    <p>
+                    	Made with Unity <a href="#">view on more</a>
+                    </p>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

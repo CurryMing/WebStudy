@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 通过 “事件” 传值 -->
+    <div class="app">
+        <!-- 在方法传递的时候 不能使用驼峰命名法  son-to-father-->
+        <son @son-to-father="show" v-bind:parent-msg="msgFromSon"></son>
+    </div>
+
+    <template id="temp">
+        <div>
+            <h1>
+                这是app实例的 私有组件
+            </h1>
+            <li v-for="(item,i) in parentMsg" :key="parentMsg[i]">{{ item }}</li>
+            <input type="button" value="调用父组件的方法" @click="comClick">
+        </div>
+    </template>
+
+    <script src="../../../lib/vue.js"></script>
+    <script>
+
+        // app 实例
+        new Vue({
+            el: ".app",
+            data: {
+                msgFromSon: {}
+            },
+            methods: {
+                show(data1,data2,data3){
+                    console.log("调用了 app实例 的 show 方法" + data1 + data2)
+                    this.msgFromSon = data3
+                },
+            },
+            components: {
+                son: {
+                    template: "#temp",
+                    data: function(){
+                        return {
+                            sonmsg: {name: "小头儿子",age: 10}
+                        }
+                    },
+                    methods: {
+                        // 通过 “事件” 传值
+                        comClick(){
+                            // 第三个参数为 子对象 传递数值给 父对象
+                            this.$emit('son-to-father'," + 参数1"," + 参数2",this.sonmsg)
+                        }
+                    },
+                    // 属性值使用驼峰命名法
+                    // 绑定的时候需要使用短横线命名法
+                    props: ["parentMsg"]
+                }
+            }
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,30 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+body{
+    height: 2000px;
+    transition: all 1s ease;
+}
+
+#div1{
+    width: 100px;
+    height: 100px;
+    background-color: #337ab7;
+    /* 一开始是显示状态 */
+    display: block;                
+    transition: all 0.5s ease;
+}
+
+.day{
+    background: #fff;
+}
+.night{
+    background: rgb(20, 20, 20);
+}
+
+.aiguo{
+    position: absolute;
+    /* opacity: 1; */
+    transition: opacity 1.25s ease-in;
+}

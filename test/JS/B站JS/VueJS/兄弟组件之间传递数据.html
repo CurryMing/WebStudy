@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 20vh;
+            flex-direction: column;
+        }
+        .son1{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 20vh;
+        }
+        .son1 h1{
+            margin-left: 50px;
+            margin-right: 50px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="app">
+        <div>
+            <father></father>
+        </div>
+    </div>
+
+    <template id="father">
+        <div>
+            <son1 class="son1" @parentchangenum="changenum"></son1>
+            <son2 class="son2" :parentchangenum="num"></son2>
+        </div>
+    </template>
+
+    <template id="son1">
+        <div>
+            <input type="button" value="-" @click="sub">
+            <h1>son1 : {{ count1 }}</h1>
+            <input type="button" value="+" @click="add">
+        </div>
+    </template>
+
+    <template id="son2">
+        <div>
+            <h1>son2 : {{ parentchangenum }}</h1>
+        </div>
+    </template>
+
+    <script src="../../../lib/vue.js"></script>
+    <script>
+        Vue.component("father",{
+            template: "#father",
+            data: function(){
+                return {
+                    num: 0
+                }
+            },
+            methods: {
+                changenum(data){
+                    this.num = data
+                }
+            },
+            components: {
+                son1: {
+                    template: "#son1",
+                    data: function(){
+                        return {
+                            count1: 0
+                        }
+                    },
+                    methods: {
+                        add(){
+                            this.count1++
+                            this.$emit("parentchangenum",this.count1)
+                        },
+                        sub(){
+                            this.count1--
+                            this.$emit("parentchangenum",this.count1)
+                        }
+                    },
+                },
+                son2: {
+                    template: "#son2",
+                    data: function(){
+                        return {
+                            count2: 0
+                        }
+                    },
+                    props: ["parentchangenum"]
+                }
+            }
+        })
+        new Vue({
+            el: ".app",
+
+        })
+    </script>
+</body>
+</html>

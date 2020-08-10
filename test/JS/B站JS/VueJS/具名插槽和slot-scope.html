@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <div class="app">
+        <father></father>
+    </div>
+    
+    <template id="father">
+        <div>
+            <son>
+                <!-- <div slot="one">我是追加数据1</div>
+                <div slot="one">我是追加数据1.1</div>
+                <div slot="two">我是追加数据2</div> -->
+                <!-- 推荐 -->
+                <!-- <template #three="ref1">
+                    <div>我是追加数据3 --- {{ ref1.names }}</div>
+                    <li v-for="name in ref1.names" :key="name">{{ name }}</li>
+                </template> -->
+                <!-- 不推荐 v-slot:default-->
+                <template v-slot:default="ref2">
+                    <div>我是追加数据5 --- {{ ref2.nums }}</div>
+                    <li v-for="num in ref2.nums">{{ num }}</li>
+                </template>
+                <!-- 不推荐 -->
+                <!-- <template slot-scope="ref">
+                    <div>我是追加数据4 --- {{ ref.ids }}</div>
+                    <li v-for="id in ref.ids" :key="id">{{ id }}</li>
+                </template> -->
+            </son>
+        </div>
+    </template>
+
+    <template id="son">
+        <div>
+            <div>我是头部</div>
+            <slot name="one">我是插槽1</slot>
+            <slot name="two">我是插槽2</slot>
+            <slot name="three" v-bind:names="names">我是插槽3</slot>
+            <slot v-bind:ids="ids">我是插槽4</slot>
+            <slot :nums="nums">我是插槽5</slot>
+            <div>我是尾部</div>
+        </div>
+    </template>
+
+    <script src="../../../lib/vue.js"></script>
+    <script>
+        Vue.component("father",{
+            template: "#father",
+            components: {
+                "son": {
+                    template: "#son",
+                    data: function(){
+                        return {
+                            names: ['oMing','Unity','Vue','JS'],
+                            ids: ['1','2'],
+                            nums: [2,8]
+                        }
+                    },
+                }
+            },
+        })
+        new Vue({
+            el: ".app",
+        })
+    </script>
+</body>
+</html>

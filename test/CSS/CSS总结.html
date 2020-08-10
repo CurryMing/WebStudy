@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" href="index.css">
+	<style type="text/css">
+		.div1{
+			width: 300px;
+			height: 300px;
+			border: 3px dashed #EE6363;
+			padding: 10px;
+			background-color: #E6E6FA;
+			/* 上左50px */
+			margin: 50px 50px;
+			text-align: center;
+		}
+		input{
+			border: 0;
+		}
+		.div1-txt{
+			color: #8B6914;
+		}
+        .name{
+	        border: 2px solid #FFB90F;
+        }    
+        table{
+        	width: 300px;
+        	height: 50px;
+        	border: 1px solid hotpink;
+        	border-collapse: collapse;
+        }
+        td{
+        	border: 1px solid hotpink;
+        }
+        section img{
+        	margin-top: 5px;
+        }
+        aside{
+        	width: 600px;
+			height: 500px;
+			position: absolute;
+			left: 50%;
+			top: 50%;
+			margin: 500px 0 auto;
+			transform: translate(-50%,-50%);
+        	background: #fff url(../images/SpaceShooter.jpg) 0 0 no-repeat;
+        	background-size: 500px 300px;
+        	background-position: 30px 50px;
+        }
+	</style>
+</head>
+<body>
+	<div class="div1">
+		<span class="div1-txt">2DRoguelike Box...</span></br>
+		<span class="div1-txt">Name</span>
+		<input type="text" name="Name" class="name">
+		<table cellspacing="0" cellpadding="0">
+			<tr>
+				<td>unity</td>
+				<td>google</td>
+				<td>tencent</td>
+				<td>leetcode</td>
+				<td>JD</td>
+			</tr>
+		</table>
+		<section>
+			<img src="../images/2DRoguelike.jpg" width="300px" height="210px">
+		</section>
+	</div>
+	<div class="div2">
+		<h3>01</h3>
+		<h3>02</h3>
+	</div>
+	<!-- 侧边栏 -->
+	<aside></aside>
+	
+	<div class="father">
+		<div class="son"></div>
+	</div>
+	
+</body>
+</html>

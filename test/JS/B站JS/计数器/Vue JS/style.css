@@ -1,0 +1,46 @@
+body{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+#counter{
+    display: inline-flex;
+    border: 3px solid #07c6DD;
+    border-radius: 20px;
+    background-color: #07c6DD;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.35);
+}
+
+#counter button{
+    background-color: transparent;
+    border: 0;
+    color: #fff;
+    font-size: 24px;
+    width: 32px;
+    height: 32px;
+    display: inline-block;
+    outline: none;
+    margin: 0;
+    padding: 0;
+    cursor: pointer;
+
+}
+
+#counter input[type = "text"]{
+    margin: 0;
+    padding: 0;
+    outline: none;
+    display: inline-block;
+    height: 32px;
+    width: 64px;
+    appearance: none;
+    background-color: #fff;
+    text-align: center;
+    font-size: 22px;
+    border: 0;
+}

@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 90vh;
+            flex-direction: column;
+        }
+        .app2{
+            text-align: center;
+        }
+        a{ text-decoration: none; color: brown; font-weight: 700; }
+        .v-enter,
+        .v-leave-to{
+            opacity: 0;
+            transform: translateX(150px);
+        }
+        .v-enter-active,
+        .v-leave-active{
+            transition: all 0.25s ease-out;
+        }
+    </style>
+</head>
+<body>
+<!-- 创建组件 -->
+    <div class="app">
+        <!-- 使用标签的形式使用已创建好的组件 -->
+        <my-com1></my-com1>
+        <my_com2></my_com2>
+        <my_com3></my_com3>
+        <login></login>
+        <father></father>
+    </div>
+    <!-- 在被控制的 app 外面，使用 template 元素创建组件的 HTML 模板结构 -->
+    <template id="tmp_1">
+        <div>
+            <h1>这是通过 template 创建的组件，有代码提示 --- {{ msg }}</h1>
+            <span>非常好用！</span>
+        </div>
+    </template>
+
+<!-- father && son -->
+    <template id="father">
+        <div><h2>father</h2><son></son></div>
+    </template>
+    <template id="son">
+        <div>son</div>
+    </template>
+
+<!-- 组件的切换 -->
+    <div class="app2">
+        <a href="" @click.prevent="login">登录</a>
+        <a href="" @click.prevent="register">注册</a>
+        <!-- 第一种 (v-if  v-else) -->
+        <transition mode="out-in">
+            <login v-if="flag"></login>
+            <register v-else="flag"></register>
+        </transition>
+
+        <!-- 第二种 (component标签) -->
+        <transition mode="out-in">
+            <component :is="comName"></component>
+        </transition>
+        
+    </div>
+
+<!-- JavaScript -->
+    <script src="../.../../../../lib/vue.js"></script>
+    <script>
+    /* 创建组件 */
+        // 第一种
+        var com1 = Vue.extend({
+            template: '<h1>这是使用 Vue.extend 创建的组件</h1>'
+        }) 
+        // 在注册 组件 的时候使用 “驼峰命名法”
+        // 在使用组件的时候就要使用 “短横线分割命名法”（my-com1）
+        Vue.component("myCom1",com1)
+        // 第二种
+        Vue.component("my_com2",{
+            template: "<div><h1>这是直接使用 Vue.component 创建的组件</h1><span>有且只有一个'根元素'</span></div>"
+        })
+        // 第三种
+        Vue.component("my_com3",{
+            template: "#tmp_1",
+            // 组件中的 data
+            data: function(){
+                return {
+                    msg: "这是组件中 data 定义的数据"
+                }
+            },
+        })
+        
+        /* 组件内的组件 */
+        Vue.component("father",{
+            template: "#father",
+            data: function(){
+                return {
+                    nums: {id: [1,2]}
+                }
+            },
+            components: {
+                "son": {
+                    template: "#son",
+                }
+            },
+        })
+
+        // 定义实例内部 私有组件
+        new Vue({
+            el: ".app",
+            data: {},
+            methods: {},
+            computed: {},
+            filters: {},
+            directives: {},
+            // 定义实例内部 私有组件
+            components: {
+                login: {
+                    template: "<h1>Login私有组件</h1>"
+                }
+            },
+        })
+
+    /* 组件的切换 */
+        Vue.component("login",{
+            template: "<h2>登录组件</h2>",
+        })
+        Vue.component("register",{
+            template: "<h2>注册组件</h2>"
+        })
+        new Vue({
+            el: ".app2",
+            data: {
+                flag: true,
+                comName: "login",
+            },
+            methods: {
+                login(){
+                    this.flag = true
+                    this.comName = "login"
+                },
+                register(){
+                    this.flag = false
+                    this.comName = "register"
+                },
+            },
+        })
+    </script>
+</body>
+</html>

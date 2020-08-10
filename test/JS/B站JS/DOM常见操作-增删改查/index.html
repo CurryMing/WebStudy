@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #first{
+            background: red;
+        }
+    </style>
+</head>
+<body>
+    <input type="button" value="按钮" id="btn">
+    <ul id="UL">
+        <li id="first">first</li>
+        <li></li>
+        <li id="li3"><span>oMing</span></li>
+        <li></li>
+        <li>last</li>
+    </ul>
+    <input type="text" id="txt">
+    <input type="button" value="添加" id="addBtn">
+    <script>
+        window.onload = function(){
+            /* 改 && 查 */
+            // 查找父元素
+            var oBtn = document.getElementById("btn");
+            // alert(oBtn.parentNode.parentNode.parentNode);
+
+            // 查找子元素
+            var oUl = document.getElementById("UL");
+            var oLi = oUl.children;
+            // alert(oLi[2].innerHTML);
+            var oFirst = oUl.firstElementChild || oUl.firstChild;
+            var oLast = oUl.lastElementChild || oUl.lastChild;
+            oFirst.style.background = 'blue';
+
+            // 查找兄弟元素
+            var nextBro = oFirst.nextElementSibling;
+            var prevBro = oLast.previousElementSibling;
+            nextBro['style'].background = 'black';
+            nextBro.innerHTML = "firstChild's nextBro";
+            nextBro['style'].color = 'white';
+            prevBro['style'].background = 'yellow';
+
+            /* 增 && 删 */
+            // 删除节点
+            oBtn.onclick = function(){
+                oUl.removeChild(nextBro);
+            }
+            // 创建元素
+            var oTxt = document.getElementById("txt");
+            var addBtn = document.getElementById("addBtn");
+            addBtn.onclick = function(){
+                var li = document.createElement("li");
+                li.innerHTML = oTxt.value;
+                //oUl.appendChild(li);
+
+                //插入到指定位置
+                oUl.insertBefore(li,oUl.children[0]);
+                oTxt.value = '';
+            }
+
+        };
+
+    </script>
+</body>
+</html>

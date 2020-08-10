@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="app">
+        <div class="countdown">
+            <svg 
+                :width="size" 
+                :height="size">
+                <!-- 背景 -->
+                <circle
+                    fill = "transparent"
+                    :stroke-width = "stroke"
+                    stroke="#eee"
+                    :r="radius"
+                    :cx="circleOffset"
+                    :cy="circleOffset"></circle>
+                <!-- 前景 -->
+                <circle 
+                    class="circle"
+                    fill = "transparent"
+                    :stroke-width = "stroke"
+                    stroke="#000"
+                    :r="radius"
+                    :cx="circleOffset"
+                    :cy="circleOffset"
+                    :stroke-dasharray = "circumference"
+                    :stroke-dashoffset = "progress"
+                    stroke-linecap = "round"></circle>
+            </svg>
+            <span>{{countdown}}</span>
+        </div>
+        
+        <button @click="animate" :disabled="isAnimating">Animate!</button>
+    </div>
+    
+    <script src="../../../lib/vue.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>

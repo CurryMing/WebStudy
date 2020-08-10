@@ -1,0 +1,37 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+h1{
+    transition: all 0.5s ease-out;
+}
+
+.menu{
+    width: 100px;
+    height: 89px;
+    border: 2px solid darkolivegreen;
+    position: absolute;
+    opacity: 0;
+    transition: opacity 0.5s ease-out;
+    transform: scale(0);
+}
+
+.open{
+    transform: scale(1);
+}
+
+.child{
+    width: 96px;
+    height: 25px;
+    border: 1px dashed darksalmon;
+    margin-bottom: 5px;
+    text-align: center;
+    line-height: 25px;
+    color: floralwhite;
+    background-color: darkslategray;
+}
+.child:hover{
+    cursor: pointer;
+}

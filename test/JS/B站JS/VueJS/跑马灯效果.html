@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="app">
+        <input type="button" value="刚枪" @click = "Gang">
+        <input type="button" value="低调" @click = "Stop">
+        <h1>{{ msg }}</h1>
+    </div>
+    <script src="../../../lib/vue.js"></script>
+    <script>
+        new Vue({
+            el: ".app",
+            data: {
+                msg: "刚枪~我先冲！",
+                timer: null,
+            },
+            methods: {
+                Gang(){
+                    if(this.timer != null) return;
+                    this.timer = setInterval(() => {
+                        var start = this.msg.substring(0,1);
+                        var end = this.msg.substring(1);
+                        this.msg = end + start;
+                    },250)
+                },
+                Stop(){
+                    clearInterval(this.timer);
+                    this.timer = null;
+                },
+            },
+        })
+    </script>
+</body>
+</html>

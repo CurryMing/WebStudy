@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <h1>{{ msg | msgFormat("敏瑶","鸿洺") | msgFormat2("哈哈哈哈")}}</h1>
+    </div>
+
+    <script src="../../../lib/vue.js"></script>
+    <script>
+        // Vue.filter("过滤器的名称",function(){})
+        // 定义一个Vue全局的过滤器，
+        Vue.filter("msgFormat",function(msg,arg,arg2){
+            return msg.replace(/honey/g,arg + arg2)
+        })
+        Vue.filter("msgFormat2",function(msg,arg){
+            return msg + "----------" + arg
+        })
+        
+        new Vue({
+            el: "#app",
+            data: {
+                msg: "I can see you staring honey honey",
+            },
+            methods: {
+
+            },
+        })
+    </script>
+</body>
+</html>

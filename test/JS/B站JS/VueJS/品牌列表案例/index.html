@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="title">添加品牌</div>
+    <div class="app">
+        <label for="" class="keyWord">
+            搜索:
+            <input type="text" v-model="keyWord" v-focus v-color="'blue'" v-fontweight="1000">
+        </label>
+        <div class="body-top">
+            <label for="" class="id">
+                Id:
+                <input type="text" v-model="id">
+            </label>
+            <label for="" class="name">
+                Name:
+                <input type="text" v-model="name" @keyup.113="add">
+            </label>
+            <input type="button" value="添加" @click="add">
+        </div>
+        <table border="1" cellspacing="0" cleepadding="0" width="800" heigth="350" align="center">
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Ctime</th>
+                <th>Operation</th>
+            </tr>
+            <tr v-for="item in search(keyWord)" :key="item.id">
+                <td>{{ item.id }}</td>
+                <td v-text="item.name"></td>
+                <!-- yyyy--mm--dd -->
+                <td>{{ item.ctime | dateFormat("","yyyy")}}</td>
+                <td><a href="javascript:;" @click.prevent="del(item.id)">删除</a></td>
+            </tr>
+        </table>
+    </div>
+    <div class="app2">
+        <h1 v-fontsize="'200'">{{ h1msg | dateFormat()}}</h1>
+    </div>
+    <script src="../../../../lib/vue.js"></script>
+    <script src="app.js"></script>    
+</body>
+</html>

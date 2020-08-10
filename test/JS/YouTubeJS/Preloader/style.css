@@ -1,0 +1,93 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.preload{
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 100vh;
+    background: #77b3d4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: opacity 0.5s ease;
+}
+.preload h3{
+    position: absolute;
+    top: 75%;
+    transform: translateY(-75%);
+    color: aliceblue;
+    font-size: 40px;
+    font-family: sans-serif;
+}
+.preload-finished{
+    opacity: 0;
+    pointer-events: none;
+}
+
+.airplane{
+    height: 200px;
+    animation: airplane 1s ease infinite alternate;
+}
+
+.cloud_1,.cloud_2,.cloud_3,.cloud_4{
+    height: 100px;
+    position: absolute;
+    right: 0;
+}
+.cloud_1{
+    top: 25%;
+    transform: translate(100%,-25%);
+    animation: cloud 5s ease infinite;
+    z-index: -1;
+}
+.cloud_2{
+    top: 50%;
+    transform: translate(100%,-50%);
+    animation: cloud 5s ease infinite 3s;
+}
+.cloud_3{
+    top: 75%;
+    transform: translate(100%,-75%);
+    animation: cloud 4s linear infinite;
+    z-index: -1;
+}
+.cloud_4{
+    top: 45%;
+    transform: translate(100%,-45%);
+    animation: cloud 5s ease infinite 2s;
+    z-index: -1;
+}
+
+section{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-100%);
+    text-align: center;
+}
+section img{
+    margin-top: 50px;
+    height: 200px;
+}
+
+@keyframes airplane{
+    from{
+        transform: translateY(0px);
+    }
+    to{ 
+        transform: translateY(50px);
+    }
+}
+
+@keyframes cloud{
+    from{
+        right: 0%;
+    }
+    to{ 
+        right: 150%;
+    }
+}

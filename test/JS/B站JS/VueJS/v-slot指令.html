@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <div class="app">
+        <father></father>
+    </div>
+    
+    <template id="father">
+        <div>
+            <son>
+                <!-- v-slot: == # -->
+                <template v-slot:one>
+                    <div>我是追加数据1</div>
+                    <div>我是追加数据1.1</div>
+                </template>
+                <template #two>
+                    <div>我是追加数据2</div>
+                </template>
+                
+            </son>
+        </div>
+    </template>
+
+    <template id="son">
+        <div>
+            <div>我是头部</div>
+            <slot name="one">我是插槽1</slot>
+            <slot name="two">我是插槽2</slot>
+            <div>我是尾部</div>
+        </div>
+    </template>
+
+    <script src="../../../lib/vue.js"></script>
+    <script>
+        Vue.component("father",{
+            template: "#father",
+            components: {
+                "son": {
+                    template: "#son",
+                }
+            },
+        })
+        new Vue({
+            el: ".app",
+
+        })
+    </script>
+</body>
+</html>
