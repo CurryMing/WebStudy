@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #gf,#f,#s{
+            border: 1px solid black;
+        }
+        #f,#s{
+            margin: 10px;
+        }
+        #gf h1{
+            background-color: brown;
+        }
+        #f h2{
+            background-color: cadetblue;
+        }
+        #s h3{
+            background-color: cornflowerblue;
+        }
+    </style>
+</head>
+<body>
+    <div class="app">
+        <grandfather id="gf"></grandfather>
+    </div>
+    <!-- grandFather -->
+    <template id="grandfather">
+        <div>
+            <h1>{{ msg }}</h1>                       <!--使用 祖先 的方法-->
+            <father id="f" :gfmsg="msg" @f-to-gf="gfsay" @gfsay="gfsay"></father>
+            <button @click="gfsay">grandfather</button>
+        </div>
+    </template>
+    <!-- father -->
+    <template id="father">
+        <div>
+            <h2>father: {{ fmsg }}</h2>
+            <button @click="fsay">father</button><!--使用 祖先 的方法-->
+            <son id="s" :fmsg="gfmsg" @s-to-f="fsay" @fsay="fsay"></son>
+        </div>
+    </template>
+    <!-- son -->
+    <template id="son">
+        <div>
+            <h3>son: {{ sonmsg }}</h3>
+            <button @click="sonsay">son</button>
+        </div>
+    </template>
+
+
+
+    <script src="../../../lib/vue.js"></script>
+    <script>
+        Vue.component("grandfather",{
+            template: "#grandfather",
+            data: function(){
+                return {
+                    msg: "grandfather data"
+                }
+            },
+            methods: {
+                gfsay(data){
+                    //console.log("gfSay")
+                    this.msg = data 
+                },
+            },
+            // 父亲组件
+            components: {
+                "father": {
+                    template: "#father",
+                    data: function(){
+                        return {
+                            fmsg: "father data"
+                        }
+                    },
+                    methods: {
+                        fsay(data){
+                            // console.log("fSay")
+                            this.$emit("f-to-gf",data)
+                            // 使用 祖先 的方法
+                            //this.$emit("gfsay")
+                        }
+                    },
+                    // 儿子组件
+                    components: {
+                        "son": {
+                            template: "#son",
+                            data: function(){
+                                return{
+                                    sonmsg: "son data"
+                                }
+                            },
+                            methods: {
+                                sonsay(){
+                                    // console.log("sonSay")
+                                    this.$emit("s-to-f",this.sonmsg)
+                                    // 使用 祖先 的方法
+                                    //this.$emit("fsay")
+                                }
+                            },
+                            props: ["fmsg"]
+                        }
+                    },
+                    props: ["gfmsg"]
+                }
+            }
+        })
+        new Vue({
+            el: ".app",
+        })
+    </script>
+</body>
+</html>
