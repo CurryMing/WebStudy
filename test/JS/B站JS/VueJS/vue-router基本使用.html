@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../../../lib/vue.js"></script>
+    <script src="../../../lib/vue-router.js"></script>
+    <style>
+        v-enter,
+        v-leave-to{
+            opacity: 0;
+            transform: translateX(150px);
+        }
+        v-enter-active,
+        v-leave-active{
+            transition: all 1s ease;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <a href="#/login">登录</a>
+        <a href="#/register">注册</a>
+        <transition mode="out-in">
+            <router-view></router-view>
+        </transition>
+    </div>
+
+    <script>
+        // 1、定义组件
+        const login = {
+            template: "<h1>登录界面</h1>"
+        }
+        const register = {
+            template: "<h1>注册界面</h1>"
+        }
+        
+        // 3、根据自定义的路由规则创建 路由对象
+        const vue_router = new VueRouter({
+            // routes // (缩写) 相当于 routes: routes
+            // 2、定义路由（切换规则）
+            routes: [
+                // 数组中的每一个对象就是一条规则
+                { path: '/login', component: login },
+                { path: '/register', component: register }
+            ]
+        })
+
+        new Vue({
+            // 4、将创建好的路由对象 绑定 到app实例
+            router: vue_router,
+        }).$mount("#app")
+    </script>
+</body>
+</html>
