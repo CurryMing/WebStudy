@@ -31,7 +31,7 @@
 <!-- 创建组件 -->
     <div class="app">
         <!-- 使用标签的形式使用已创建好的组件 -->
-        <my-com1></my-com1>
+        <!-- <my-com1></my-com1> -->
         <my_com2></my_com2>
         <my_com3></my_com3>
         <login></login>
@@ -40,7 +40,7 @@
     <!-- 在被控制的 app 外面，使用 template 元素创建组件的 HTML 模板结构 -->
     <template id="tmp_1">
         <div>
-            <h1>这是通过 template 创建的组件，有代码提示 --- {{ msg }}</h1>
+            <h1>这是通过 template 创建的组件(myCom3)，有代码提示 --- {{ msg }}</h1>
             <span>非常好用！</span>
         </div>
     </template>
@@ -76,14 +76,14 @@
     /* 创建组件 */
         // 第一种
         var com1 = Vue.extend({
-            template: '<h1>这是使用 Vue.extend 创建的组件</h1>'
+            template: '<h1>这是使用 Vue.extend 创建的组件(myCom1)</h1>'
         }) 
         // 在注册 组件 的时候使用 “驼峰命名法”
         // 在使用组件的时候就要使用 “短横线分割命名法”（my-com1）
         Vue.component("myCom1",com1)
         // 第二种
         Vue.component("my_com2",{
-            template: "<div><h1>这是直接使用 Vue.component 创建的组件</h1><span>有且只有一个'根元素'</span></div>"
+            template: "<div><h1>这是直接使用 Vue.component 创建的组件(myCom2)</h1><span>有且只有一个'根元素'</span></div>"
         })
         // 第三种
         Vue.component("my_com3",{
@@ -115,6 +115,11 @@
         new Vue({
             el: ".app",
             data: {},
+            // 组件第二种渲染方法
+            render: function(createElement){
+                let myCom1 = createElement("myCom1")
+                return myCom1
+            },
             methods: {},
             computed: {},
             filters: {},

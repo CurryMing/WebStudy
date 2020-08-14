@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../../../lib/vue.js"></script>
+    <script src="../../../lib/vue-router.js"></script>
+    <style>
+        .lr-active{
+            background-color: black;
+            color: white;
+        }
+        button{
+            outline: none;
+        }
+        .login-com,.register-com{
+            border: 1px solid black;
+            border-radius: 5px;
+            width: 250px;
+            height: 350px;
+        }
+        .oming,.vue{
+            border: 1px solid brown;
+            border-radius: 10px;
+            width: 150px;
+            height: 150px;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <router-link to="/login" tag="button">登录</router-link>
+        <router-link to="/register" tag="button">注册</router-link>     
+        <router-view></router-view>
+    </div>
+
+    <template id="login">
+        <div class="login-com">
+            <h1>登录界面</h1>
+            <router-link to="/login/oming" tag="button">oMing</router-link>
+            <router-link to="/login/vue" tag="button">Vue</router-link>     
+            <router-view></router-view>
+        </div>
+    </template>
+
+    <template id="register">
+        <div class="register-com">
+            <h1>注册界面</h1>
+        </div>
+    </template>
+
+    <template id="oming">
+        <div class="oming">
+            <h3>oMing oooooo</h3>
+        </div>
+    </template>
+    <template id="vue">
+        <div class="vue">
+            <h3>Vue vvvvvvvvv</h3>
+        </div>
+    </template>
+
+    <script>
+        // login 子组件
+        const oming = {
+            template: "#oming"
+        }
+        const vue = {
+            template: "#vue"
+        }
+
+        // 1、定义组件
+        const login = {
+            template: "#login",
+            components: {
+                oming: oming,
+                vue: vue,
+            },
+        }
+        const register = {
+            template: "#register",
+        }
+
+        const vue_router_1 = new VueRouter({
+            routes: [
+                { path: '/login', component: login, 
+                    children: [
+                        { path: 'oming', component: oming,},
+                        { path: 'vue', component: vue},
+                    ]
+                },
+                { path: '/register', component: register },
+                { path: '/', redirect: '/login' }
+            ],
+            linkActiveClass: "lr-active",
+        })
+
+        new Vue({
+            // 4、将创建好的路由对象 绑定 到app实例
+            router: vue_router_1,
+            components: {
+                login,
+                register,
+            }
+        }).$mount("#app")
+    </script>
+</body>
+</html>

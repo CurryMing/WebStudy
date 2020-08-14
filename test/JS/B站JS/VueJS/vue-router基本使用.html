@@ -7,33 +7,43 @@
     <script src="../../../lib/vue.js"></script>
     <script src="../../../lib/vue-router.js"></script>
     <style>
-        v-enter,
-        v-leave-to{
-            opacity: 0;
-            transform: translateX(150px);
+        .lr-active{
+            background-color: black;
+            color: white;
         }
-        v-enter-active,
-        v-leave-active{
-            transition: all 1s ease;
+        button{
+            outline: none;
         }
     </style>
 </head>
 <body>
     <div id="app">
-        <a href="#/login">登录</a>
-        <a href="#/register">注册</a>
-        <transition mode="out-in">
-            <router-view></router-view>
-        </transition>
+        <!-- 第一种赋值方式 -->
+        <router-link to="/login?name=oMing&age=21" tag="button">登录</router-link>
+        <!-- 第二种赋值方式 -->
+        <router-link to="/register/vue/5" tag="button">注册</router-link>     
+        <router-view></router-view>
     </div>
 
     <script>
         // 1、定义组件
         const login = {
-            template: "<h1>登录界面</h1>"
+            template: "<h1>登录界面</h1>",
+            // 生命周期方法
+            created(){
+                // console.log(this.$route)
+                // 第一种获取方式
+                // console.log(this.$route.query.name + " " + this.$route.query.age)
+            }
         }
         const register = {
-            template: "<h1>注册界面</h1>"
+            template: "<h1>注册界面</h1>",
+            // 生命周期方法
+            created(){
+                console.log(this.$route)
+                // 第二种获取方式
+                console.log(this.$route.params.name + " " + this.$route.params.age)
+            }
         }
         
         // 3、根据自定义的路由规则创建 路由对象
@@ -43,8 +53,13 @@
             routes: [
                 // 数组中的每一个对象就是一条规则
                 { path: '/login', component: login },
-                { path: '/register', component: register }
-            ]
+                // 第二种赋值方式
+                { path: '/register/:name/:age', component: register },
+                // 路由重定向
+                //{ path: '/', redirect: '/login' }
+            ],
+            // 修改 router-link 的类名
+            linkActiveClass: "lr-active",
         })
 
         new Vue({
