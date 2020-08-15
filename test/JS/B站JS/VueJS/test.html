@@ -9,21 +9,53 @@
 <body>
     <div id="app">
         <div>
-            <mycom3></mycom3>
+            <father></father>
         </div>
     </div>
-    <!-- 在实例app外定义组件的模板 -->
-    <!-- 好处就是【代码提示】 -->
-    <template id="com3">
-        <!-- 只允许拥有一个根元素 -->
+    <template id="father">
         <div>
-            <h1>mycom3--</h1>
+            <h1>father :{{ sobj.name }} -- {{ sobj.age }}</h1>
+            <son @stof="receiveSon"></son>
+        </div>
+    </template>
+
+    <template id="son">
+        <div>
+            <button @click="sonToFather">投入到父亲的怀抱</button>
+            <h1>son : {{ sonobj.name }} -- {{sonobj.age}}</h1>
         </div>
     </template>
 
     <script>
-        Vue.component("mycom3",{
-            template: "#com3"
+        Vue.component("father",{
+            data: function(){
+                return {
+                    sobj: {
+                        name: "", age: "",
+                    },
+                }
+            },
+            methods: {
+                receiveSon(data){
+                    this.sobj = data
+                }
+            },
+            template: "#father",
+            components: {
+                son: {
+                    template: "#son",
+                    data: function(){
+                        return {
+                            sonobj: {name: "喜羊羊",age: "12",},
+                        }
+                    },
+                    methods: {
+                        sonToFather(){
+                            this.$emit("stof",this.sonobj)
+                        }
+                    },
+                }
+            }
         })
         new Vue({
             el: "#app",

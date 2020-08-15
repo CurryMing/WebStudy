@@ -14,6 +14,15 @@
         button{
             outline: none;
         }
+        .v-enter,
+        .v-leave-to{
+            opacity: 0;
+            transform: translateY(150px);
+        }
+        .v-enter-active,
+        .v-leave-active{
+            transition: all 0.25s ease-in;
+        }
     </style>
 </head>
 <body>
@@ -22,7 +31,9 @@
         <router-link to="/login?name=oMing&age=21" tag="button">登录</router-link>
         <!-- 第二种赋值方式 -->
         <router-link to="/register/vue/5" tag="button">注册</router-link>     
-        <router-view></router-view>
+        <transition mode="out-in">
+            <router-view></router-view>
+        </transition>
     </div>
 
     <script>
