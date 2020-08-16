@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../../../lib/jquery-1.11.3.js"></script>
+    <script>
+        window.onload = function(){
+            var oImg = document.querySelector("img")
+            console.log(oImg)
+            var width = window.getComputedStyle(oImg).width
+            console.log(width)
+        }
+        $(document).ready(function(){
+            var $img = $("img")
+            console.log($img)
+            var $width = $img.width()
+            console.log($width)
+        })
+
+        window.onload = function(){
+            alert("js1")
+        }
+        window.onload = function(){
+            alert("js2")
+        }
+
+        $(document).ready(function(){
+            alert("hello jq1")
+        })
+        $(document).ready(function(){
+            alert("hello jq2")
+        })
+    </script>
+</head>
+<body>
+    <img src="https://unity-cn-cdn-prd.unitychina.cn/assets/styles/i/cn/home/education-services/09.17d27ac959afdef1365b62c92124a8de.jpg" alt="">
+</body>
+</html>

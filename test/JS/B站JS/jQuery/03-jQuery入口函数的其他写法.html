@@ -5,13 +5,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <script src="../../../lib/jquery-1.11.3.js"></script>
-    <script>
-        $(document).ready(function(){
-            alert("Hello JQ")
-        })
-    </script>
 </head>
 <body>
-    
+    <script>
+        $(document).ready(function(){
+            alert("1")
+        })
+        jQuery(document).ready(function(){
+            alert("2")
+        })
+        $(function(){
+            alert("3(推荐)")
+        })
+        jQuery(function(){
+            alert("4")
+        })
+    </script>
 </body>
 </html>
