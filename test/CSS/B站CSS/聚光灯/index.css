@@ -27,10 +27,10 @@ h1::after{
 	background: -webkit-linear-gradient(left,#c23616,#192a56,#00d2d3,yellow,#6D214F,#2e86de,#4cd137,#e84118);
 	
 	background-clip: text;
-    -webkit-background-clip: text;  /*兼容*/
-    
-    clip-path: circle(100px at 0% 50%);
-    -webkit-clip-path: circle(100px at 0% 50%);
+	-webkit-background-clip: text;  /*兼容*/
+	
+	clip-path: circle(100px at 0% 50%);
+	-webkit-clip-path: circle(100px at 0% 50%);
 	
 	animation: light 5s infinite;
 }
