@@ -3,12 +3,12 @@
 + **坚持就是胜利！**
 + *oMing*
   - Vue
-  - jQuery 
+  - jQuery
 
 > Vue
 >> v-on:
 >>> ```html
-<button v-on:click='Show'></button> 
+<button v-on:click='Show'></button>
 ```
 
 >> v-bind:
