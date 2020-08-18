@@ -17,7 +17,7 @@ Vue.filter("dateFormat",function(dataStr,pattern=""){
 })
 
 // 自定义全局按键修饰符
-Vue.config.keyCodes.f2 = 113
+Vue.config.keyCodes.enter = 113
 
 // 使用 Vue.directive() 定义全局的 指令
 Vue.directive("focus",{
