@@ -15,9 +15,10 @@
 
     <template id="temp">
         <div>
-            <h1>{{ this.$store.getters.format }}</h1>
-            <h1>{{ this.$store.getters.format }}</h1>
-            <h1>{{ this.$store.getters.format }}</h1>
+            <!-- "getters format 执行"这句话只会执行一次 -->
+            <h1>{{ this.format }}</h1>
+            <h1>{{ this.format }}</h1>
+            <h1>{{ this.format }}</h1>
         </div>
     </template>
 

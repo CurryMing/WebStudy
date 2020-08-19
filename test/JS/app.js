@@ -1,4 +1,4 @@
-document.write('<script src="../JS总结/封装/move.js"><\/script>')
+document.write('<script src="../JS/封装/move.js"><\/script>')
 function ChangeScale(res1,res2){
     var myDiv1 = document.getElementById('div1');
     myDiv1.style.width = res1;

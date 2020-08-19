@@ -11,14 +11,20 @@
 <button v-on:click='Show'>   </button>
 ```
 - - -
->>> v-bind:
+>>> v-bind:  **（给元素的 ++属性++ 绑定数据）**
 ```
 <h1 v-bind:gmsg='msg'>{{ gmsg }}</h1>
 ```
 - - -
+>>> {{}}、v-text=''、v-html=''**（给 ++元素++ 绑定数据）**
+```
+<p>{{ data }}</p>
+<p v-text='data'></p>
+<p v-html='data'></p>
+```
 
 >Vuex
->> ++ state ++ ++  **（用于存储全局数据）**
+>> ++ state ++  **（用于存储全局数据）**
 + 组件访问 state 中的全局数据的方式1：
 ```javascript
 this.$store.state.全局数据
@@ -39,7 +45,7 @@ export default {
 <p>{{ inputValue }}</p>
 ```
 - - -
->> ++ mutations ++ ++  **（用于变更store存储的数据，不要在mutations中进行异步操作）**
+>> ++ mutations ++  **（用于变更store存储的数据，不要在mutations中进行异步操作）**
 + 调用mutations的方式1：
 ```javascript
 // 在store中定义
@@ -65,7 +71,7 @@ export default{
 }
 ```
 - - -
->> ++ getters ++ ++  **（用于对Store中的数据加工处理形成新的数据）**
+>> ++ getters ++  **（用于对Store中的数据加工处理形成新的数据）**
 + 定义getters
 ```javascript
 getters: {
