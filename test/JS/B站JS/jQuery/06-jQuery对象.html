@@ -1,23 +1,24 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     <script src="../../../lib/jquery-1.11.3.js"></script>
 </head>
+
 <body>
+    <div>div</div>
+    <div>div</div>
+    <div>div</div>
     <script>
-        // 1、释放$的使用权
-        /* jQuery.noConflict()
-        jQuery(function(){
-            alert('oMing')
-        }) */
-        // 2、自定义访问的符号
-        var om = jQuery.noConflict()
-        om(function(){
-            alert('oMing')
+        $(function(){
+            var $divs = $('div')
+            // 伪数组
+            console.log($divs)
         })
     </script>
 </body>
+
 </html>
