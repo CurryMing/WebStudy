@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        .father{
+            width: 200px;
+            height: 200px;
+            border: 50px solid black;
+            margin-left: 100px;
+            position: relative;
+        }
+        .son{
+            width: 100px;
+            height: 100px;
+            background-color: aquamarine;
+            position: absolute;
+        }
+    </style>
+
+    <script src="../../../lib/jquery-1.11.3.js"></script>
+    <script>
+        $(function(){
+            // 编写 jQuery 相关代码
+            // 获取
+            $('button').eq(0).click(function(){
+                console.log('offset.left: ' + $('.son').offset().left)
+                console.log('width: ' + $('.son').width())
+                console.log('position: ' + $('.son').position().left)
+            })
+            // 设置
+            $('button').eq(1).click(function(){
+                $('.son').width('200px')
+                $('.son').height('200px')
+                $('.son').offset({
+                    left: 200,
+                    top: 200
+                })
+            })
+        })
+    </script>
+</head>
+
+<body>
+    <div class="father">
+        <div class="son">
+            
+        </div>
+    </div>
+    <button>获取</button>
+    <button>设置</button>
+</body>
+
+</html>

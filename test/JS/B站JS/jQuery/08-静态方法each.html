@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="../../../lib/jquery-1.11.3.js"></script>
+</head>
+
+<body>
+    <script>
+        const arr = [1,3,5,7,9]
+        arr.forEach(function(num,index){
+            console.log(index,num)
+        })
+
+        console.log('--------------------------------------')
+
+        $.each(arr,function(index,num){
+            console.log(index,num)
+        })
+        console.log('--------------------------------------')
+        const obj = {
+            0: 2,1: 4,2: 6,3: 8,4: 10,length: 5
+        }
+        $.each(obj,function(index,num){
+            console.log(index,num)
+        })
+    </script>
+</body>
+
+</html>

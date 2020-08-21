@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="../../../lib/jquery-1.11.3.js"></script>
+    <script>
+        $(function(){
+            // 编写 jQuery 相关代码
+            $('div').delegate('button','click',function(){
+                // jQuery 效果
+                // $('p').slideToggle()
+                $('div').css({
+                    "background": 'pink',
+                })
+                $("p").slideToggle("fast",function(){
+                    $('div').css({
+                        "background": 'hotpink',
+                    })
+                });
+            })
+
+            $('.addLiBtn').click(function(){
+                $('ul').append('<li>li-add</li>')
+            })
+
+            /* $('ul>li').click(function(){
+                console.log($(this).html())
+            }) */
+            // 把 li 的 click 事件委托给 ul 监听
+            $('ul').delegate('li','click',function(){
+                console.log($(this).html())
+            })
+        })
+    </script>
+</head>
+
+<body>
+    <div style="background-color:pink">
+        <p>这是一个段落。</p>
+        <button>请点击这里</button>
+    </div>
+    <div style="background-color: skyblue;">
+        <ul>
+            <li>li-1</li>
+            <li>li-2</li>
+            <li>li-3</li>
+        </ul>
+        <button class="addLiBtn">add li</button>
+    </div>
+    <script>
+
+    </script>
+</body>
+
+</html>

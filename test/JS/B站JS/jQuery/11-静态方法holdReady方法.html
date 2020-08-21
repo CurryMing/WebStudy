@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="../../../lib/jquery-1.11.3.js"></script>
+    <script>
+        // $.holeReady() 用于暂停和恢复入口函数事件
+        $.holdReady(true)
+        /* $(document).ready(function(){
+            alert('ready')
+        }) */
+        $(function(){
+            alert('ready')
+        })
+    </script>
+</head>
+
+<body>
+    <button class="btn">!holdReady</button>
+    <script>
+        var btn = document.querySelector('.btn')
+        btn.onclick = function(){
+            console.log('click')
+            $.holdReady(false)
+        }
+    </script>
+</body>
+
+</html>
