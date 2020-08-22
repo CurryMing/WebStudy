@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style></style>
+
+    <script src="../../../lib/jquery-1.11.3.js"></script>
+    <script>
+        $(function(){
+            // 编写 jQuery 相关代码
+            $('span').eq(0).prop('demo','so easy to happy')
+            $('span').eq(1).prop('demo','not easy not happy')
+            console.log($('span').prop('demo'))
+
+            $('span').removeProp('demo')
+
+            // prop与attr不同的是 prop找不到属性节点的时候，不会添加
+            $('span').prop('data','01')
+
+            console.log($('span').prop('class'))
+            $('span').prop('class','box')
+
+            // prop 与 attr 的区别
+            console.log($('input').prop('checked')) // true false
+            console.log($('input').attr('checked')) // checked undefined
+
+        })
+    </script>
+</head>
+
+<body>
+    <span class="span1" name='oMing'></span>
+    <span class="span2" name='jQuery'></span>
+    <input type="checkbox" name="check">
+</body>
+
+</html>

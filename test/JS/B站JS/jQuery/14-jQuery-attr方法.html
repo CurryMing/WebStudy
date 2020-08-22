@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style></style>
+
+    <script src="../../../lib/jquery-1.11.3.js"></script>
+    <script>
+        $(function(){
+            // 编写 jQuery 相关代码
+            console.log($('span').attr('class'))
+            $('span').attr('class','box')
+
+            // 找不到节点就添加
+            $('span').attr('data','02') 
+
+            $('span').removeAttr('class name')
+        })
+    </script>
+</head>
+
+<body>
+    <span class="span1" name='oMing'></span>
+    <span class="span2" name='jq'></span>
+</body>
+
+</html>
