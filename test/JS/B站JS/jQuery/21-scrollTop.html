@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .scroll{
+            width: 300px;
+            height: 500px;
+            border: 1px solid black;
+            overflow: auto;
+        }
+    </style>
+
+    <script src="../../../lib/jquery-1.11.3.js"></script>
+    <script>
+        $(function(){
+            // 编写 jQuery 相关代码
+            $('button').eq(0).click(function(){
+                // console.log($('.scroll').scrollTop())
+                console.log($('html').scrollTop() + $('body').scrollTop())
+            })
+
+            $('button').eq(1).click(function(){
+                // $('.scroll').scrollTop('80')
+                $('html,body').scrollTop('80')
+            })
+        })
+        
+    </script>
+</head>
+
+<body>
+    <div class="scroll">
+        /* 改 && 查 */
+        // 查找父元素
+        var oBtn = document.getElementById("btn");
+        // alert(oBtn.parentNode.parentNode.parentNode);
+
+        // 查找子元素
+        var oUl = document.getElementById("UL");
+        var oLi = oUl.children;
+        // alert(oLi[2].innerHTML);
+        var oFirst = oUl.firstElementChild || oUl.firstChild;
+        var oLast = oUl.lastElementChild || oUl.lastChild;
+        oFirst.style.background = 'pink';
+
+        // 查找兄弟元素
+        var nextBro = oFirst.nextElementSibling;
+        var prevBro = oLast.previousElementSibling;
+        nextBro['style'].background = 'black';
+        nextBro.innerHTML = "firstChild's nextBro";
+        nextBro['style'].color = 'white';
+        prevBro['style'].background = 'hotpink';
+
+        /* 增 && 删 */
+        // 创建元素
+        var oTxt = document.getElementById("txt");
+        var addBtn = document.getElementById("addBtn");
+        addBtn.onclick = function(){
+            var li = document.createElement("li");
+            li.innerHTML = oTxt.value;
+            //oUl.appendChild(li);
+            //插入到指定位置
+            oUl.insertBefore(li,oUl.children[0]);
+            oTxt.value = '';
+        }
+        // 删除节点
+        oBtn.onclick = function(){
+            oUl.removeChild(nextBro);
+        }  
+    </div>
+    <button>获取</button>
+    <button>设置</button>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+</body>
+
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style></style>
+
+    <script src="../../../lib/jquery-1.11.3.js"></script>
+    <script>
+        $(function(){
+            // 编写 jQuery 相关代码
+            // 绑定
+            $('.btn1').click(function(){
+                console.log('1')
+            })
+            $('.btn1').on('click',function(){
+                console.log('2')
+            })
+            function test(){
+                console.log('3')
+            }
+            $('.btn1').on('click',test)
+            $('.btn1').mouseenter(function(){
+                alert('mouseenter')
+            })
+            $('.btn1').mouseleave(function(){
+                alert('mouseleave')
+            })
+
+            // 解绑
+            $('.btn2').click(function(){
+                $('.btn1').off()
+            })
+            $('.btn3').click(function(){
+                $('.btn1').off('click')
+            })
+            $('.btn4').click(function(){
+                $('.btn1').off('click',test)
+            })
+        })
+    </script>
+</head>
+
+<body>
+    <button class="btn1">事件</button>
+    <button class="btn2">解绑所有事件</button>
+    <button class="btn3">解绑click</button>
+    <button class="btn4">解绑指定的click事件</button>
+</body>
+
+</html>
