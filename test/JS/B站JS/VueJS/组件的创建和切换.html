@@ -31,9 +31,9 @@
 <!-- 创建组件 -->
     <div class="app">
         <!-- 使用标签的形式使用已创建好的组件 -->
-        <!-- <my-com1></my-com1> -->
+        <my-com1></my-com1>
         <my_com2></my_com2>
-        <my_com3></my_com3>
+        <mycom3></mycom3>
         <login></login>
         <father></father>
     </div>
@@ -86,7 +86,7 @@
             template: "<div><h1>这是直接使用 Vue.component 创建的组件(myCom2)</h1><span>有且只有一个'根元素'</span></div>"
         })
         // 第三种
-        Vue.component("my_com3",{
+        Vue.component("mycom3",{
             template: "#tmp_1",
             // 组件中的 data
             data: function(){
@@ -116,10 +116,10 @@
             el: ".app",
             data: {},
             // 组件第二种渲染方法
-            render: function(createElement){
+            /* render: function(createElement){
                 let myCom1 = createElement("myCom1")
                 return myCom1
-            },
+            }, */
             methods: {},
             computed: {},
             filters: {},
