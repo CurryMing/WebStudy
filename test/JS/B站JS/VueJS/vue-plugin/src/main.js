@@ -7,6 +7,7 @@ Vue.config.productionTip = false
 // import loading from './components/Loading'
 // Vue.component(loading.name,loading)
 
+// 使用 use 来使用组件
 import loading from './plugin/Loading/index'
 Vue.use(loading,{
   title: '慢慢来...'
