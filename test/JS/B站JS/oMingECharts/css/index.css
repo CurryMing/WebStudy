@@ -53,6 +53,7 @@ header h1 {
 .main-box .column:nth-child(2) {
   flex: 5;
   margin: 0 0.125rem 0.1875rem;
+  overflow: hidden;
 }
 .main-box .panel {
   position: relative;
@@ -91,9 +92,14 @@ header h1 {
   font-size: 0.25rem;
   font-weight: 400;
 }
-.main-box .chart {
+.main-box h2 a {
+  color: #fff;
+  text-decoration: none;
+  margin: 0 0.5rem;
+}
+.main-box .panel .chart {
   height: 3rem;
-  background-color: #02a6e5;
+  width: 100%;
 }
 .no {
   background-color: rgba(101, 132, 226, 0.1);
@@ -185,7 +191,6 @@ header h1 {
   transform: translate(-50%, -50%);
   background: url(../images/lbx.png) no-repeat center center;
   background-size: 100% 100%;
-  z-index: -1;
   animation: spin-1 15s linear infinite;
 }
 .map .spin-2 {
@@ -197,8 +202,15 @@ header h1 {
   transform: translate(-50%, -50%);
   background: url(../images/jt.png) no-repeat center center;
   background-size: 100% 100%;
-  z-index: 1;
   animation: spin-2 10s linear infinite;
+}
+.map .chart {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 5;
+  height: 10.125rem;
+  width: 100%;
 }
 @keyframes spin-1 {
   from {
@@ -214,5 +226,16 @@ header h1 {
   }
   to {
     transform: translate(-50%, -50%) rotateZ(-360deg);
+  }
+}
+/* 约束屏幕尺寸 */
+@media screen and (max-width: 1024px) {
+  html {
+    font-size: 42px !important;
+  }
+}
+@media screen and (min-width: 1920px) {
+  html {
+    font-size: 80px !important;
   }
 }
