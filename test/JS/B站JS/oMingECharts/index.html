@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>数据可视化</title>
+    <link rel="stylesheet" href="./css/index.css">
+    <script src="./js/echarts.min.js"></script>
+</head>
+<body>
+    <!-- 头部的盒子 -->
+    <header>
+        <div class="oMing">oMing</div>
+        <h1>数据可视化ECharts</h1>
+        <div class="showTime"></div>
+    </header>
+    <!-- 页面主体部分 -->
+    <section class="main-box">
+        <div class="column left">
+            <div class="panel bar">
+                <h2>柱形图-就业行业</h2>
+                <div class="chart1">图表</div>
+            </div>
+            <div class="panel line">
+                <h2>柱形图-就业行业</h2>
+                <div class="chart">图表</div>
+            </div>
+            <div class="panel pie">
+                <h2>柱形图-就业行业</h2>
+                <div class="chart">图表</div>
+            </div>
+        </div>
+        <!-- 中间部分 -->
+        <div class="column center">
+            <!-- NO模块制作 -->
+            <div class="no">
+                <div class="no-hd">
+                    <ul>
+                        <li>6523568</li>
+                        <li>8888889</li>
+                    </ul>
+                </div>
+                <div class="no-bd">
+                    <ul>
+                        <li>前端需求人数</li>
+                        <li>市场供应人数</li>
+                    </ul>
+                </div>
+            </div>
+            <!-- Map模块制作 -->
+            <div class="map">
+                <div class="cube"></div>
+                <div class="spin-1"></div>
+                <div class="spin-2"></div>
+            </div>
+        </div>
+        <div class="column right">
+            <div class="panel bar">
+                <h2>柱形图-就业行业</h2>
+                <div class="chart">图表</div>
+            </div>
+            <div class="panel line">
+                <h2>柱形图-就业行业</h2>
+                <div class="chart">图表</div>
+            </div>
+            <div class="panel pie">
+                <h2>柱形图-就业行业</h2>
+                <div class="chart">图表</div>
+            </div>
+        </div>
+    </section>
+    
+    <script src="./js/flexible.js"></script>
+    <script>
+        var t = null
+        function time(){
+            var dt = new Date()
+            var year = dt.getFullYear().toString().padStart(2,"0")
+            var month = (dt.getMonth() + 1).toString().padStart(2,"0")
+            var day = dt.getDate().toString().padStart(2,"0")
+            var hour = dt.getHours().toString().padStart(2,"0")
+            var minute = dt.getMinutes().toString().padStart(2,"0")
+            var second = dt.getSeconds().toString().padStart(2,"0")
+            document.querySelector('.showTime').innerHTML = `${year}年${month}月${day}日${hour}:${minute}:${second}`
+        }
+        time()
+        clearInterval(t)
+        t = setInterval(time,1000)
+        var industry = echarts.init(document.querySelector('.bar'))
+        var option = {
+            title: {
+                text: '就业行业'
+            },
+            tooltip: {},
+            legend: {
+                data:['销量']
+            },
+            grid: {
+                left: '0%',
+                right: '0%',
+                bottom: '0%',
+                top: '15%',
+            },
+            xAxis: {
+                data: ["衬衫","羊毛衫","雪纺衫","裤子","高跟鞋","袜子"]
+            },
+            yAxis: {},
+            series: [{
+                name: '销量',
+                type: 'bar',
+                data: [5, 20, 36, 10, 10, 20]
+            }]
+        };
+        // 使用刚指定的配置项和数据显示图表。
+        industry.setOption(option);
+    </script>
+</body>
+</html>
