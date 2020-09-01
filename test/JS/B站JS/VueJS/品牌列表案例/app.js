@@ -1,38 +1,38 @@
 // 全局过滤器
-Vue.filter("dateFormat",function(dataStr,pattern=""){
+Vue.filter("dateFormat", function (dataStr, pattern = "") {
     var dt = new Date(dataStr)
     // yyyy-mm-dd
     var y = dt.getFullYear()
-    var m = (dt.getMonth() + 1).toString().padStart(2,"0")
-    var d = dt.getDate().toString().padStart(2,"0")
+    var m = (dt.getMonth() + 1).toString().padStart(2, "0")
+    var d = dt.getDate().toString().padStart(2, "0")
 
-    if(pattern.toLowerCase() === "yyyy--mm--dd"){
+    if (pattern.toLowerCase() === "yyyy--mm--dd") {
         return `${y}-${m}-${d}`
-    }else{
-        var h = dt.getHours().toString().padStart(2,"0")
-        var min = dt.getMinutes().toString().padStart(2,"0")
-        var s = dt.getSeconds().toString().padStart(2,"0")
+    } else {
+        var h = dt.getHours().toString().padStart(2, "0")
+        var min = dt.getMinutes().toString().padStart(2, "0")
+        var s = dt.getSeconds().toString().padStart(2, "0")
         return `${y}-${m}-${d} ${h}:${min}:${s}`
     }
 })
 
 // 自定义全局按键修饰符
-Vue.config.keyCodes.enter = 113
+Vue.config.keyCodes.f2 = 113
 
 // 使用 Vue.directive() 定义全局的 指令
-Vue.directive("focus",{
-    bind: function(el){
-        
+Vue.directive("focus", {
+    bind: function (el) {
+
     },
-    inserted: function(el){
+    inserted: function (el) {
         el.focus()
     },
-    update: function(){
+    update: function () {
 
     }
 })
-Vue.directive("color",{
-    bind: function(el,binding){
+Vue.directive("color", {
+    bind: function (el, binding) {
         // el.style.color = "red"
         el.style.color = binding.value
     }
@@ -45,29 +45,29 @@ new Vue({
         name: "",
         keyWord: "",
         isExited: false,
-        list:[
-            {id: 1,name: "玛莎拉蒂",ctime: new Date()},
-            {id: 2,name: "特斯拉",ctime: new Date()},
+        list: [
+            { id: 1, name: "玛莎拉蒂", ctime: new Date() },
+            { id: 2, name: "特斯拉", ctime: new Date() },
         ],
     },
     methods: {
-        add(){
+        add() {
             this.list.forEach(item => {
-                if(item.id == this.id){
+                if (item.id == this.id) {
                     this.isExited = true
                 }
             })
-            if(this.id == "" || this.name=="" || this.isExited){
+            if (this.id == "" || this.name == "" || this.isExited) {
                 alert("添加失败！")
                 this.id = this.name = ""
                 return
             }
-            var car = {id: this.id,name: this.name,ctime: new Date()}
+            var car = { id: this.id, name: this.name, ctime: new Date() }
             this.list.push(car)
             this.id = this.name = ""
             alert("添加成功！")
         },
-        del(id){
+        del(id) {
             // this.list.some((item,i) => {
             //     if(item.id == id){
             //         this.list.splice(i,1)
@@ -77,13 +77,13 @@ new Vue({
             // })
 
             var index = this.list.findIndex(item => {
-                if(item.id == id){
+                if (item.id == id) {
                     return true
                 }
             })
-            this.list.splice(index,1)
+            this.list.splice(index, 1)
         },
-        search(keyWord){
+        search(keyWord) {
             // var newList = []
             // this.list.forEach(item => {
             //     if(item.name.indexOf(keyWord) != -1){
@@ -92,7 +92,7 @@ new Vue({
             // });
             // return newList
             return this.list.filter(item => {
-                if(item.name.includes(keyWord)){
+                if (item.name.includes(keyWord)) {
                     return item
                 }
             })
@@ -100,7 +100,7 @@ new Vue({
     },
     // 自定义私有 指令
     directives: {
-        "fontweight": function(el,binding){
+        "fontweight": function (el, binding) {
             el.style.fontWeight = binding.value
         }
     },
@@ -113,27 +113,37 @@ new Vue({
     },
     // 
     filters: {
-        dateFormat: function(dataStr,pattern=""){
+        dateFormat: function (dataStr, pattern = "") {
             var dt = new Date(dataStr)
             // yyyy-mm-dd
             var y = dt.getFullYear()
-            var m = (dt.getMonth() + 1).toString().padStart(2,"0")
-            var d = dt.getDate().toString().padStart(2,"0")
+            var m = (dt.getMonth() + 1).toString().padStart(2, "0")
+            var d = dt.getDate().toString().padStart(2, "0")
 
-            if(pattern.toLowerCase() === "yyyy--mm--dd"){
+            if (pattern.toLowerCase() == "yyyy--mm--dd") {
                 return `${y}-${m}-${d}`
-            }else{
-                var h = dt.getHours().toString().padStart(2,"0")
-                var min = dt.getMinutes().toString().padStart(2,"0")
-                var s = dt.getSeconds().toString().padStart(2,"0")
+            } else {
+                var h = dt.getHours().toString().padStart(2, "0")
+                var min = dt.getMinutes().toString().padStart(2, "0")
+                var s = dt.getSeconds().toString().padStart(2, "0")
                 return `${y}-${m}-${d} ${h}:${min}:${s}~~~`
             }
         }
     },
     //简写的自定义的 私有指令
     directives: {
-        "fontsize": function(el,binding){
+        "fontsize": function (el, binding) {
             el.style.fontSize = parseInt(binding.value) + "px"
         }
-    } ,
+    },
+})
+
+Vue.filter('messageFormat',function(message,arg){
+    return message.replace(/#/g,arg)
+})
+new Vue({
+    el: '#app3',
+    data: {
+        message: 'Fireming love #,# is great'
+    }
 })

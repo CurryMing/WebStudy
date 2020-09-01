@@ -24,7 +24,7 @@
             </label>
             <input type="button" value="添加" @click="add">
         </div>
-        <table border="1" cellspacing="0" cleepadding="0" width="800" heigth="350" align="center">
+        <table border="1" cellspacing="0" cellpadding="0" width="800" height="200" align="center">
             <tr>
                 <th>Id</th>
                 <th>Name</th>
@@ -35,13 +35,16 @@
                 <td>{{ item.id }}</td>
                 <td v-text="item.name"></td>
                 <!-- yyyy--mm--dd -->
-                <td>{{ item.ctime | dateFormat("","yyyy")}}</td>
-                <td><a href="javascript:;" @click.prevent="del(item.id)">删除</a></td>
+                <td>{{ item.ctime | dateFormat("yyyy--mm--dd")}}</td>
+                <td><a href="" @click.prevent="del(item.id)">删除</a></td>
             </tr>
         </table>
     </div>
     <div class="app2">
-        <h1 v-fontsize="'20'">{{ h1msg | dateFormat()}}</h1>
+        <h1 v-fontsize="'20'">{{ h1msg | dateFormat('yyyy--mm--dd')}}</h1>
+    </div>
+    <div id="app3">
+        <p>{{ message | messageFormat('vue')}}</p>
     </div>
     <script src="../../../../lib/vue.js"></script>
     <script src="app.js"></script>    

@@ -1,10 +1,12 @@
-var arr1 = Array(5,5);
-// console.log(arr1.length);
+/* var arr1 = Array(5);
+arr1[1]=100
+console.log(arr1);
 
-var arr2 = [];
-arr2.length = 8;
+var arr2 = [100];
+// arr2.length = 8;
 // console.log(arr2.length)
-
+arr2[1]=200
+console.log(arr2); */
 
 /* 1、let */
 // 不可重复声明
@@ -107,3 +109,40 @@ function data(a,b,...args){
 }
 data(1,2,3,4,5,6)
 
+/* let a={n: 12}
+let b=a
+b.n=13
+console.log(`n: ${a.n}`); */
+
+/* let a={n: 12}
+let b=a
+b = {
+  n: 13
+}
+console.log(`n: ${a.n}`); */
+
+let a={n: 1}
+let b=a
+// 先计算成员访问 a.x
+a.x = a = {n: 2}
+console.log(`a.x: ${a.x}`);
+console.log(`b: ${b.n}  ${b.x.n}`);
+
+let arr1 = [12,23]
+function fn(y){
+  y[0] = 100
+  y = [100]
+  y[1] = 200
+  console.log(y);
+}
+fn(arr1)
+console.log(arr1);
+
+var x = 4
+function y(j,k,x){
+  console.log(x);
+  arguments[2] = 10
+  console.log(x);
+}
+x = y(1,2,3)
+console.log(x);

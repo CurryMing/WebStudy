@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 90vh;
+        }
+        ul{
+            width: 300px;
+            border: 1px solid black;
+        }
+        li{
+            margin: 5px 5px;
+            padding: 2px;
+            list-style: none;
+        }
+        input{
+            margin-right: 5px;
+            margin-bottom: 5px;
+        }
+    </style>
+
+    <script src="../../../lib/jquery-1.11.3.js"></script>
+    <script src="../../../lib/vue.js"></script>
+    <script src="../../../lib/vuex.js"></script>
+    <script src="../../../lib/vue-router.js"></script>
+    <script>
+        $(function(){
+            // 编写 jQuery 相关代码
+
+        })
+
+    </script>
+</head>
+
+<body>
+
+    <div id="app">
+        <input type="text" v-model='name'>
+        <input type="submit" @click.prevent='add'>
+        <ul>
+            <li v-for='(person,index) in persons' :key='person.id'><input type="checkbox">{{ person.name }}</li>
+        </ul>
+    </div>
+
+    <script>
+        // 编写 Vue 相关代码
+        new Vue({
+            el: '#app',
+            data: {
+                name: '',
+                id: 0,
+                persons: [
+                    {name: 'javascript',id: 1},
+                    {name: 'Vue',id: 2},
+                    {name: 'jQuery',id: 3}
+                ]
+            },
+            methods: {
+                add(){
+                    let lastId = ++this.id
+                    let newObj = {name: this.name,id: lastId}
+                    this.persons.unshift(newObj)
+                    this.name = ''
+                }
+            },
+            created(){
+                this.id = this.persons[this.persons.length-1].id
+            }
+        });
+    </script>
+</body>
+
+</html>
