@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>Document</title>
+	<style>
+		* {
+			margin: 0;
+			padding: 0;
+			box-sizing: border-box;
+		}
+
+		#main-box {
+			width: 800px;
+			height: 600px;
+			border: 1px solid black;
+			position: absolute;
+			left: 50px;
+			top: 50px;
+		}
+	</style>
+</head>
+
+<body>
+	<input type="button" value="弹球" id="btn" />
+	<div id="main-box"></div>
+
+	<script>
+		var colors = ['red','black','yellow','blue','hotpink']
+		let main_box = document.getElementById("main-box");
+		document.getElementById("btn").onclick = function () {
+			var ball = document.createElement("div");
+			ball.style.cssText = "position: absolute;border-radius: 50%";
+			ball.style.width = "50px";
+			ball.style.height = "50px";
+			ball.style.backgroundColor = colors[Math.floor(Math.random()*colors.length)];
+			main_box.appendChild(ball);
+
+			let left = main_box.clientWidth / 2 - ball.offsetWidth / 2;
+			let top = main_box.clientHeight / 2 - ball.offsetHeight / 2;
+
+			ball.style.left = left + "px";
+			ball.style.top = top + "px";
+
+			var x = 1;
+			var y = 1;
+
+			setInterval(function () {
+				left += x;
+				top += y;
+
+				if (left < 0 || left > main_box.offsetWidth - ball.offsetWidth) {
+					x = -x;
+				}
+				if (top < 0 || top > main_box.offsetHeight - ball.offsetHeight) {
+					y = -y;
+				}
+
+				ball.style.left = left + "px";
+				ball.style.top = top + "px";
+			}, 5);
+		};
+	</script>
+</body>
+
+</html>

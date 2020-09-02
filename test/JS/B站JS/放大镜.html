@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .small{
+            margin-top: 10px;
+            margin-right: 8px;
+        }
+
+        .small img {
+            width: 129px;
+            height: 100px;
+        }
+
+        .total {
+            display: flex;
+            position: relative;
+            left: 50px;
+            top: 50px;
+        }
+
+        .middle {
+            width: 516px;
+            height: 389px;
+        }
+        .large{
+            width: 200px;
+            height: 200px;
+            margin-left: 30px;
+            overflow: hidden;
+            position: absolute;
+            left: 40%;
+            top: 10%;
+        }
+        .large img{
+            position: absolute;
+            display: none;
+        }
+
+        .current {
+            border: 2px dashed rgb(66, 66, 66);
+        }
+
+        .shadow{
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            background-color: rgba(24, 25, 85, 0.5);
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="total">
+        <div class="main">
+            <div class="middle">
+                <img src="../../images/2DRoguelike.jpg">
+                <div class="shadow"></div>
+            </div>
+            <div class="small">
+                <img src="../../images/2DRoguelike.jpg" class="current">
+                <img src="../../images/SpaceShooter.jpg">
+                <img src="../../images/SurvivalShooter.jpg">
+                <img src="../../images/Tank!.jpg">
+            </div>
+        </div>
+        <div class="large">
+            <img src="../../images/2DRoguelike.jpg" width="1032" height="778">
+        </div>
+    </div>
+
+    <script>
+        function $(cn) {
+            return document.querySelector(cn)
+        }
+        let mid_img = $('.middle img')
+        let mid_box = $('.middle')
+        let large_img = $('.large img')
+        let large_box = $('.large')
+        let shadow = $('.shadow')
+        let smalls = document.querySelectorAll('.small img')
+        let total_box = $('.total')
+        smalls.forEach(element => {
+            element.addEventListener("mouseenter", () => {
+                mid_img.setAttribute('src', element.getAttribute('src'))
+                large_img.setAttribute('src', element.getAttribute('src'))
+                smalls.forEach(ele => {
+                    ele.className = ''
+                })  
+                element.className = 'current'
+            })
+        })
+        mid_box.onmouseenter = function(){
+            large_img.style.display = 'block'
+            shadow.style.display = 'block'
+        }
+        mid_box.onmouseleave = function(){
+            large_img.style.display = 'none'
+            shadow.style.display = 'none'
+        }
+        mid_box.onmousemove = function(e){
+            var ev = e || event
+            var shadowL = ev.clientX - shadow.offsetWidth/2 - total_box.offsetLeft
+            var shadowT = ev.clientY - shadow.offsetHeight/2 - total_box.offsetTop
+
+            if(shadowL<0) shadowL = 0
+            if(shadowT<0) shadowT = 0
+
+            var maxL = mid_box.offsetWidth - shadow.offsetWidth 
+            var maxT = mid_box.offsetHeight - shadow.offsetHeight 
+
+            if(shadowL>maxL) shadowL = maxL
+            if(shadowT>maxT) shadowT = maxT
+
+            shadow.style.left = shadowL + 'px'
+            shadow.style.top = shadowT +'px'
+
+            var largeImgL = shadowL * (large_img.offsetWidth - large_box.offsetWidth) / maxL
+            var largeImgT = shadowT * (large_img.offsetHeight - large_box.offsetHeight) / maxT
+            large_img.style.left = -largeImgL + 'px'
+            large_img.style.top = -largeImgT + 'px'
+        }
+    </script>
+</body>
+
+</html>
