@@ -1,43 +1,67 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+
 <body>
     <!-- 通过 “绑定” 传值 -->
-    <div class="app">
-        <!-- 在 父对象 中通过 v-bind: 传递 -->
-        <o-com :parent-msg="msg"></o-com>
-        <p>{{ ii }}</p>
+    <div id="app">
+        <father></father>
     </div>
+
+    <template id="father">
+        <div>
+            <h1>father:{{ fatherMsg.name }} -- {{ fatherMsg.age }}</h1>
+            <son :faobj='fatherMsg'></son>
+        </div>
+    </template>
+    <template id="son">
+        <div>
+            <input type="button" @click='getFather' value="获取一个父亲">
+            <h1>小头儿子:my father -- {{ faobj.name }} -- {{ faobj.age }}</h1>
+        </div>
+    </template>
 
     <script src="../../../lib/vue.js"></script>
     <script>
-        // app 实例
-        new Vue({
-            el: ".app",
-            data: {
-                msg: "app实例 的数据",
-                ii: 'iiiiiii'
+        Vue.component('father', {
+            template: '#father',
+            data: function () {
+                return {
+                    fatherMsg: {
+                        name: '小头爸爸',
+                        age: '21'
+                    }
+                }
             },
             components: {
-                // 在注册 组件 的时候使用 “驼峰命名法”
-                // 在使用组件的时候就要使用 “短横线分割命名法”（o-com）
-                oCom: {
-                    data: function(){
+                son: {
+                    template: '#son',
+                    data: function () {
                         return {
-                            com1file: {title: "私有组件",content: "com1"},
+                            fobj: {
+                                name: '',
+                                age: ''
+                            }
                         }
                     },
-                    // 组件中的 props 中的数据，都是通过父组件传递过来的
-                    // 在 子对象 中通过 自定义名称parentmsg接收
-                    props: ["parentMsg"],
-                    template: "<h1>这是私有的组件---{{ parentMsg }}---{{ com1file }}</h1>"
+                    props: ['faobj'],
+                    methods: {
+                        getFather() {
+                            this.fobj = this.faobj
+                        }
+                    }
                 }
             }
         })
+        new Vue({
+            el: "#app",
+        })
     </script>
 </body>
+
 </html>

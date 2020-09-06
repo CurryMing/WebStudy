@@ -10,10 +10,10 @@ console.log(arr2); */
 
 /* 1、let */
 // 不可重复声明
-let l1 = 't'
-// let l1 = 't'
+let l1 = 1
+// let l1 = 2
 var v1 = 't'
-var v1 = 'tt'
+var v1 = 't'
 console.log(v1)
 
 // 块作用域
@@ -58,26 +58,32 @@ let obj1 = {
 }
 
 /* 箭头函数 */
-let fun2 = function () {
+let commonFun = function () {
 	console.log(this.name)
 }
-let fun22 = () => {
+let arrowFun = () => {
 	console.log(this.name)
 }
 window.name = 'oMing'
-// fun2()
-// fun22()
+commonFun()
+arrowFun()
 let people = { name: 'Vue' }
-fun2.call(people)
-// 'this是静态的'
-fun22.call(people)
+commonFun.call(people)
+// 'this是静态的',不会改变
+arrowFun.call(people)
 
 // 点击div1，延迟改变颜色
 let div1 = document.getElementById('div1')
 div1.addEventListener('click', function () {
+	// 箭头函数做法
 	setTimeout(() => {
 		this.style.background = 'pink'
-	}, 2000)
+	}, 1000)
+	// 普通函数做法
+	let self = this
+	setTimeout(function(){
+		self.style.background = 'pink'
+	},1000)
 })
 
 // 返回偶数
@@ -87,7 +93,7 @@ console.log(arr.filter(item => item % 2 == 0))
 /* 扩展运算符 */
 const arr3 = ['unity', 'google', 'vue']
 function web() {
-	console.log(arguments)
+	console.log(arguments[1])
 }
 web(...arr3)
 //数组的合并
