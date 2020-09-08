@@ -28,14 +28,14 @@
 	<div id="main-box"></div>
 
 	<script>
-		var colors = ['red','black','yellow','blue','hotpink']
+		var colors = ['red', 'black', 'yellow', 'blue', 'hotpink']
 		let main_box = document.getElementById("main-box");
 		document.getElementById("btn").onclick = function () {
 			var ball = document.createElement("div");
 			ball.style.cssText = "position: absolute;border-radius: 50%";
 			ball.style.width = "50px";
 			ball.style.height = "50px";
-			ball.style.backgroundColor = colors[Math.floor(Math.random()*colors.length)];
+			ball.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
 			main_box.appendChild(ball);
 
 			let left = main_box.clientWidth / 2 - ball.offsetWidth / 2;
