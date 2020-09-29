@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>00-Fireming动画</title>
+	<style type="text/css">
+		span {
+			opacity: 0;
+			position: absolute;
+		}
+	</style>
+</head>
+<body>
+
+	<span id="txt">Fireming</span>
+
+	<script type="text/javascript">
+	    var span = document.getElementById('txt')
+
+	    var timer1 = null
+	    var timer2 = null
+
+	    document.onclick = function(e) {
+	    	// 每次点击,重置span的透明度为 1
+	    	span.style.opacity = '1'
+
+	    	var mouseX = e.clientX
+	    	var mouseY = e.clientY
+	    	
+	    	// 每次点击,把span移动到鼠标的位置,居中且 span 在鼠标的上方
+	    	span.style.left = mouseX - span.offsetWidth/2 + 'px' 
+	    	span.style.top = mouseY - span.offsetHeight + 'px'
+
+	    	// 逐渐变淡 且 向上升
+	    	Fade(span,0,1,10)
+	    	Move(span,mouseY - 100,1,15)
+	    }
+
+	    function Fade(obj,to,speed,time) {
+	    	// 每一次点击都把定时器先关闭,防止动画被加速
+			clearInterval(timer1)
+			var alpha = obj.style.opacity * 100
+			speed = (to / 100) > obj.style.opacity ? speed : (-1*speed)
+			timer1 = setInterval(function() {
+				if(alpha === to){
+					clearInterval(timer1)
+					return
+				}
+				alpha += speed
+				obj.style.opacity = alpha / 100
+			},time)
+		}
+
+		function Move(obj,to,speed,time){
+			// 每一次点击都把定时器先关闭,防止动画被加速
+			clearInterval(timer2)
+			speed = to > obj.offsetTop ? speed : (-1*speed)
+			timer2 = setInterval(function() {
+				if(obj.offsetTop === to){
+					clearInterval(timer2)
+					return
+				}
+				obj.style.top = obj.offsetTop + speed + 'px'
+			},time)
+		}
+	</script>
+
+</body>
+</html>

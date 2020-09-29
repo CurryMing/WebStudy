@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>06-多物体缓动动画</title>
+	<style type="text/css">
+		* {
+			margin: 0;
+			padding: 0;
+		}
+		div {
+			width: 100px;
+			height: 100px;
+			background-color: #333744;
+			position: relative;
+			top: 50px;
+			margin-bottom: 10px;
+			border: 10px solid #ccc;
+		}
+	</style>
+</head>
+<body>
+	<div id="box1"></div>
+	<div id="box2"></div>
+	<div id="box3"></div>
+
+	<script type="text/javascript">
+		var box1 = document.getElementById('box1')
+		var box2 = document.getElementById('box2')
+		var box3 = document.getElementById('box3')
+
+		box1.onmouseenter = function() {
+			tween(this,500,20)
+		}
+		box1.onmouseleave = function() {
+			tween(this,100,20)
+		}
+
+		box2.onmouseenter = function() {
+			tween(this,500,10)
+		}
+		box2.onmouseleave = function() {
+			tween(this,100,10)
+		}
+
+		box3.onmouseenter = function() {
+			tween(this,500,5)
+		}
+		box3.onmouseleave = function() {
+			tween(this,100,5)
+		}
+
+		// 封装函数
+		function tween(obj,to,time){
+			var speed = 0
+			clearInterval(obj.timer)
+			obj.timer = setInterval(function() {
+				var cur = parseInt(getStyle(obj,'width'))
+				if(to >= cur){
+					speed = Math.ceil((to-cur) / 30)
+				}else{
+					speed = Math.floor((to-cur) / 30)
+				}
+				if(cur === to){
+					clearInterval(obj.timer)
+					return
+				}
+				obj.style.width = cur + speed + 'px'
+			},time)
+		}
+
+		// 封装获取【样式】的函数
+		function getStyle(obj,name) {
+			      // IE                                      // 主流  
+			return obj.currentStyle ? obj.currentStyle[name] : getComputedStyle(obj,false)[name];
+		}
+	</script>
+</body>
+</html>

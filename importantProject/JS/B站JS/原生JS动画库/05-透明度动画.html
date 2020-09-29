@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>05-透明度动画</title>
+	<style type="text/css">
+		* {
+			margin: 0;
+			padding: 0;
+		}
+		#box {
+			width: 100px;
+			height: 100px;
+			background-color: #333744;
+			position: relative;
+			top: 200px;
+		}
+	</style>
+</head>
+<body>
+	<div id="box"></div>
+
+	<script type="text/javascript">
+		var box = document.getElementById('box')
+		box.style.opacity = '1'
+        var timer = null
+
+		box.onmouseenter = function() {
+			tween(this,0,10)
+		}
+		box.onmouseleave = function() {
+			tween(this,100,10)
+		}
+
+		// 封装函数
+		function tween(obj,to,time) {
+			clearInterval(timer)
+			var alpha = obj.style.opacity * 100
+			speed = (to / 100) > obj.style.opacity ? 5 : -5
+			timer = setInterval(function() {
+				if(alpha === to){
+					clearInterval(timer)
+					return
+				}
+				alpha += speed
+				obj.style.opacity = alpha / 100
+			},time)
+		}
+	</script>
+</body>
+</html>

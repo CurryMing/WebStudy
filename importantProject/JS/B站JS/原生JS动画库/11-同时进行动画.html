@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>11-同时进行动画</title>
+	<style type="text/css">
+		* {
+			margin: 0;
+			padding: 0;
+		}
+		div {
+			width: 100px;
+			height: 100px;
+			background-color: #333744;
+			position: relative;
+			top: 50px;
+			margin-bottom: 10px;
+			border: 10px solid #ccc;
+		}
+	</style>
+</head>
+<body>
+	<div id="box1"></div>
+
+	<script type="text/javascript">
+		var box1 = document.getElementById('box1')
+
+		box1.onmouseenter = function() {
+			tween(this,{ 'opacity': 30,'width': 300 },30)
+		}
+		box1.onmouseleave = function() {
+			tween(this,{ 'opacity': 100,'width': 100 },30)
+		}
+
+		// 封装函数
+		function tween(obj,json,time){
+			var speed = 0,curStyle = 0,to = 0
+			clearInterval(obj.timer)
+			obj.timer = setInterval(function() {
+				var flag = true
+				for(var name in json){
+					to = json[name]
+					if(name === 'opacity'){
+					    curStyle = Math.round(parseFloat(getStyle(obj,name)) * 100) 
+				    }else {
+					    curStyle = parseInt(getStyle(obj,name))
+				    }
+				    if(to >= curStyle){
+					    speed = Math.ceil((to-curStyle) / 15)
+				    }else{
+					    speed = Math.floor((to-curStyle) / 15)
+				    }
+				    if(curStyle !== to){
+					    flag = false
+				    }
+				    if(name === 'opacity'){
+					    obj.style[name] = (curStyle + speed) / 100
+				    }else {
+					    obj.style[name] = curStyle + speed + 'px'
+				    }
+				}
+				if(flag){
+					clearInterval(obj.timer)
+					return
+				}
+			},time)
+		}
+
+		// 封装获取【样式】的函数
+		function getStyle(obj,name) {
+			      // IE                                      // 主流  
+			return obj.currentStyle ? obj.currentStyle[name] : getComputedStyle(obj,false)[name];
+		}
+	</script>
+</body>
+</html>

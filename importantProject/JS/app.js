@@ -78,7 +78,7 @@ window.onload = function(){
         aiGuo.style.left = oEvent.clientX + sL - aiGuo.offsetWidth/2 + "px";
         aiGuo.style.top = oEvent.clientY + sT - (aiGuo.offsetHeight+10) + "px";
 
-        aiGuo.style.opacity = 1;
+        aiGuo.style.opacity = '1';
         //aiGuo.style.opacity = 0;
         move(aiGuo,'opacity',0,1250);
         //move(aiGuo,'top',oEvent.clientY+sT-50,1250);
