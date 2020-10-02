@@ -1,0 +1,27 @@
+<html>
+<body>
+<style>
+	body {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		min-height: 90vh;
+		font-size: 25px;
+		background-color: #333744;
+	}
+    #a:hover {color : #FFC75F;}
+    #a:hover > #b:first-child{color : #B39CD0;}    
+    #a:hover > #b{color : #C34A36;}  
+    #a:hover + #c{color : #008F7A;}
+    #a:hover + #c > #b{color : #D65DB1;}
+</style>
+<div id='a'>元素a
+  <div id='b'>元素ab</div>
+  <div id='b'>元素ab</div>
+</div>
+<div id='c'>元素c
+  <div id='b'>元素cb</div>
+</div>
+</body>
+</html>

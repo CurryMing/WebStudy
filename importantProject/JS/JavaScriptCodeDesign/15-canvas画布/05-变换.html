@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>05-变换</title>
+    <style type="text/css">
+    body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 90vh;
+    }
+
+    canvas {
+        background-color: #fdcb6e;
+    }
+    </style>
+</head>
+
+<body>
+    <canvas id="drawing" width="400" height="400">a drawing of something</canvas>
+    <script type="text/javascript">
+    var drawing = document.getElementById('drawing')
+    // 确定浏览器是否支持canvas
+    if (drawing.getContext) {
+        var context = drawing.getContext("2d");
+        //开始路径
+        context.beginPath();
+        //绘制外圆
+        context.arc(100, 100, 99, 0, 2 * Math.PI, false);
+        //绘制内圆
+        context.moveTo(194, 100);
+        context.arc(100, 100, 94, 0, 2 * Math.PI, false);
+        //变换原点
+        context.translate(100, 100);
+        // 旋转表针
+        context.rotate(10);
+        // 绘制分针
+        context.moveTo(0, 0);
+        context.lineTo(0, -85);
+        //绘制时针
+        context.moveTo(0, 0);
+        context.lineTo(-65, 0);
+        // 描边路径
+        context.stroke();
+        // 在路径被关闭之前确定画布上的某一点是否位于路径上
+        if (context.isPointInPath(100, 100)) {
+            console.log("Point (100, 100) is in the path.");
+        }
+    }
+    </script>
+</body>
+
+</html>

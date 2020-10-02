@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>01-基本用法</title>
+	<style type="text/css">
+		body {
+			background-color: #000;
+		}
+	</style>
+</head>
+<body>
+	<canvas id="drawing" width="800" height="200">a drawing of something</canvas>
+
+	<script type="text/javascript">
+		var drawing = document.getElementById('drawing')
+		// 确定浏览器是否支持canvas
+		if(drawing.getContext){
+			// 取得图像的数据 URI
+            var imgURI = drawing.toDataURL("airplane");
+            // 显示图像
+            var image = document.createElement("img");
+            image.src = imgURI;
+            document.body.appendChild(image);
+		}
+	</script>
+</body>
+</html>

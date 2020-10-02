@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>04-绘制文本</title>
+    <style type="text/css">
+    body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 90vh;
+    }
+
+    canvas {
+        background-color: #ddd;
+    }
+    </style>
+</head>
+
+<body>
+    <canvas id="drawing" width="800" height="600">a drawing of something</canvas>
+    <script type="text/javascript">
+    var drawing = document.getElementById('drawing')
+    // 确定浏览器是否支持canvas
+    if (drawing.getContext) {
+        var context = drawing.getContext("2d");
+        context.font = "bold 25px Arial";
+        context.textAlign = "center";
+        context.textBaseline = "middle";
+        context.fillText("12", 100, 20);
+
+        // 起点对齐
+        context.textAlign = "start";
+        context.fillText("12", 100, 40);
+        // 终点对齐
+        context.textAlign = "end";
+        context.fillText("12", 100, 60);
+
+        //  measureText()
+        // measureText() 方法利用 font 、 textAlign 和 textBaseline 的当前值计算指定文本的大小。
+        // 比如， 假设你想在一个 140 像素宽的矩形区域中绘制文本 Hello world!，下面的代码从 100 像素的字体大小开始递减， 最终会找到合适的字体大小。
+        var fontSize = 100;
+        context.font = fontSize + "px Arial";
+        while (context.measureText("Hello world!").width > 140) {
+            fontSize--;
+            context.font = fontSize + "px Arial";
+        }
+        context.fillText("Hello world!", 500, 100);
+        context.fillText("Font size is " + fontSize + "px", 600, 200);
+    }
+    </script>
+</body>
+
+</html>
