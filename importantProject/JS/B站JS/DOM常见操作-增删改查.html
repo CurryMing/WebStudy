@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #first{
+            background: red;
+        }
+    </style>
+</head>
+<body>
+    <input type="button" value="删除黑色" id="btn">
+    <div>
+        <p>Eum officiis nesciunt voluptate molestiae aperiam, unde nostrum assumenda, illo ipsum voluptatem ut nobis non esse. Quos, nemo voluptatibus, nostrum dicta error eos unde magnam, possimus illum harum placeat reprehenderit.
+        <p>Eum nemo cum dolorum labore beatae optio officiis! Et explicabo, cum consequuntur nisi voluptates perspiciatis voluptas qui? Recusandae, dolore! Aliquid laudantium neque, expedita temporibus quae fuga perferendis asperiores harum quaerat!
+        <p>Repudiandae eum iure iusto commodi saepe praesentium minima assumenda dolorum sequi temporibus, fugit doloribus vero similique dolores facere, eaque rem magnam veritatis eligendi cum blanditiis dolor. Nisi similique commodi nulla?
+        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Praesentium alias repellendus rerum dicta sequi rem accusamus minima ex veritatis, illum dolore doloribus quia, natus beatae magnam molestias, saepe illo consectetur!
+        <p>Harum itaque perspiciatis illum iure atque reprehenderit at voluptatibus labore libero laboriosam quia molestiae eum quis explicabo eveniet, beatae quibusdam! Earum minus nostrum labore repellat inventore magni alias explicabo voluptatem.
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque quo labore iste, nihil qui ullam quisquam sequi optio accusantium inventore recusandae corrupti molestias. Beatae sint earum, id repellendus veritatis obcaecati.</p>
+        </div>
+    <ul id="UL">
+        <li id="first">first</li>
+        <li></li>
+        <li id="li3"><span>oMing</span></li>
+        <li></li>
+        <li>last</li>
+    </ul>
+    <input type="text" id="txt">
+    <input type="button" value="添加" id="addBtn">
+    <script>
+        /* 改 && 查 */
+        // 查找父元素
+        var oBtn = document.getElementById("btn");
+        // alert(oBtn.parentNode.parentNode.parentNode);
+
+        // 查找子元素
+        var oUl = document.getElementById("UL");
+        var oLi = oUl.children;
+        // alert(oLi[2].innerHTML);
+        var oFirst = oUl.firstElementChild || oUl.firstChild;
+        var oLast = oUl.lastElementChild || oUl.lastChild;
+        oFirst.style.background = 'pink';
+
+        // 查找兄弟元素
+        var nextBro = oFirst.nextElementSibling;
+        var prevBro = oLast.previousElementSibling;
+        nextBro['style'].background = 'black';
+        nextBro.innerHTML = "firstChild's nextBro";
+        nextBro['style'].color = 'white';
+        prevBro['style'].background = 'hotpink';
+
+        /* 增 && 删 */
+        // 创建元素
+        var oTxt = document.getElementById("txt");
+        var addBtn = document.getElementById("addBtn");
+        addBtn.onclick = function(){
+            var li = document.createElement("li");
+            li.innerHTML = oTxt.value;
+            //oUl.appendChild(li);
+            //插入到指定位置
+            oUl.insertBefore(li,oUl.children[0]);
+            oTxt.value = '';
+        }
+        // 删除节点
+        oBtn.onclick = function(){
+            oUl.removeChild(nextBro);
+        }  
+    </script>
+</body>
+</html>

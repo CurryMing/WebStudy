@@ -7,7 +7,9 @@ document.querySelector(".scalable").addEventListener("mousedown",startDrag);
 function startDrag(e){
     startX = e.clientX;
     startWidth = getScalableDivWidth();
+    // 鼠标拖拽
     document.documentElement.addEventListener("mousemove",onDrag);
+    // 鼠标松开
     document.documentElement.addEventListener("mouseup",stopDrag);
 }
 function onDrag(e){
@@ -16,6 +18,7 @@ function onDrag(e){
 }
 function stopDrag(e){
     localStorage.setItem("scalable_width",getScalableDivWidth());
+    // 移除事件
     document.documentElement.removeEventListener("mousemove",onDrag);
     document.documentElement.removeEventListener("mouseup",stopDrag);
 }

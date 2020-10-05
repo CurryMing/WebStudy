@@ -3,8 +3,14 @@
     padding: 0;
 }
 body{
-    height: 2000px;
+    /* height: 2000px; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 90vh;
+    height: 100%;
     transition: all 1s ease;
+    background: rgb(20, 20, 20);
 }
 
 #div1{
@@ -27,4 +33,21 @@ body{
     position: absolute;
     /* opacity: 1; */
     transition: opacity 1.25s ease-in;
+}
+
+svg {
+    width: 100px;
+    cursor: pointer;
+    background-color: #fff;
+}
+
+.ball {
+    /* 绘画圆形的原理：将虚线的长度（stroke-dasharray）设定为【圆周】的长度，然后通过调整stroke-dashoffset将虚线进行位移 */
+    stroke-dasharray: 95; /* 设定虚线的长度 */
+    stroke-dashoffset: 95; /*  */
+    transition: all 0.5s ease-in-out;
+}
+
+svg:hover .ball {
+    stroke-dashoffset: 0;
 }

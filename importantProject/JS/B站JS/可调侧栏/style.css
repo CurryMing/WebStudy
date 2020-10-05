@@ -14,7 +14,7 @@ body{
     position: relative;
     min-width: 200px;
 }
-.scalable .sparator{
+.scalable .separator{
     position: absolute;
     display: flex;
     justify-content: center;
@@ -27,12 +27,13 @@ body{
     box-shadow: 0 0 2px rgba(0, 0, 0, 0.35);
     cursor: col-resize;
 }
-.scalable .sparator i{
+.scalable .separator i{
     width: 2px;
     height: 50px;
     display: inline-block;
     margin: 0 1px;
     background-color: #e9e9e9;
+    /* background-color: #333744; */
 }
 
 

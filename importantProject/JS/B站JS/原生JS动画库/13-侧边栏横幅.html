@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>13-侧边栏横幅</title>
+    <style>
+        body {
+            height: 5000px;
+        }
+        #aside {
+            position: absolute;
+            left: 0;
+            top: 100px;
+        }
+    </style>
+    <script src="./js/MingAnimation.js"></script>
+</head>
+<body>
+    <img src="../../../images/纸筒人.png" alt="" id="aside">
+
+    <script>
+        var aside = document.getElementById('aside')
+        var asideTop = aside.offsetTop
+        window.onscroll = function() {
+            var scrollTop = document.documentElement.scrollTop
+            tween(aside,{'top': asideTop + scrollTop},20)
+        }
+    </script>
+</body>
+</html>

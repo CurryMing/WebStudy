@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 	<meta charset="UTF-8">
 	<title>12-联动动画</title>
@@ -8,12 +9,14 @@
 			margin: 0;
 			padding: 0;
 		}
+
 		#ad {
 			height: 516px;
 			position: fixed;
 			right: 0;
 			bottom: 50px;
 		}
+
 		#close {
 			width: 30px;
 			height: 30px;
@@ -21,13 +24,17 @@
 			top: 10px;
 			position: absolute;
 		}
-		#close:hover > #close1 {
+
+		#close:hover>#close1 {
 			transform: rotateZ(135deg);
 		}
-		#close:hover > #close2 {
+
+		#close:hover>#close2 {
 			transform: rotateZ(45deg);
 		}
-		#close1,#close2 {
+
+		#close1,
+		#close2 {
 			position: absolute;
 			top: 3px;
 			right: 12.5px;
@@ -35,17 +42,20 @@
 			height: 25px;
 			border-radius: 25px;
 			background-color: #333744;
-			transition: all 0.2s ease;	
+			transition: all 0.2s ease;
 		}
+
 		#close1 {
 			transform: translateY(-5px) rotateZ(90deg);
 		}
+
 		#close2 {
 			transform: translateY(5px) rotateZ(90deg);
 		}
 	</style>
 	<script src="./js/MingAnimation.js" type="text/javascript"></script>
 </head>
+
 <body>
 	<div id="ad">
 		<img src="../../../images/平安物语.gif">
@@ -57,13 +67,23 @@
 
 	<script type="text/javascript">
 		var ad = document.getElementById('ad')
-		var close = document.getElementById('close')
-		close.onclick = function() {
+		var closeBtn = document.getElementById('close')
+		closeBtn.onclick = function () {
 			// body...
-			tween(ad,{'height': 500},20,function() {
-				tween(ad,{'width': 0},20)
+			tween(ad, {
+				'height': 500
+			}, 20, function () {
+				tween(ad, {
+					'width': 0
+				}, 20, function () {
+					ad.style.display = 'none'
+				})
 			})
+			tween(closeBtn, {
+				'opacity': 0
+			}, 10)
 		}
 	</script>
 </body>
+
 </html>
