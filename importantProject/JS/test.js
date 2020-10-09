@@ -196,3 +196,4 @@ var obj = {
 
 let s = Symbol('Fireming')
 console.log(s,typeof s);
+
