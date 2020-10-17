@@ -6,6 +6,8 @@
       <el-breadcrumb-item>用户管理</el-breadcrumb-item>
       <el-breadcrumb-item>用户列表</el-breadcrumb-item>
     </el-breadcrumb>
+    <!-- 面包屑导航区 -->
+
     <!-- 卡片视图 -->
     <el-card>
       <!-- 搜索与添加区域 -->
@@ -94,6 +96,8 @@
         :total="total"
       ></el-pagination>
     </el-card>
+    <!-- 卡片视图 -->
+    
     <!-- 添加用户对话框 -->
     <el-dialog
       @close="addDialogClosed"
@@ -415,17 +419,17 @@ export default {
           rid: this.selectedRoleId,
         }
       );
-      if(res.meta.status !== 200){
-        return this.$message.error('更新角色失败！')
+      if (res.meta.status !== 200) {
+        return this.$message.error("更新角色失败！");
       }
-      this.$message.success('更新角色成功！')
-      this.getUsersList()
-      this.setRoleDialogVisible = false
+      this.$message.success("更新角色成功！");
+      this.getUsersList();
+      this.setRoleDialogVisible = false;
     },
-    setRoleDialogClosed(){
-      this.selectedRoleId = ''
+    setRoleDialogClosed() {
+      this.selectedRoleId = "";
       // this.userInfo = {}
-    }
+    },
   },
 };
 </script>

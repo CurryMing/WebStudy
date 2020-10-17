@@ -12,7 +12,7 @@
       <el-aside :width="isCollapse ? '64px' : '200px'">
         <div class="toggle-button" @click="toggleCollapse">|||</div>
         <el-menu
-		  :default-active="activePath"
+          :default-active="activePath"
           router
           :collapse-transition="false"
           :collapse="isCollapse"
@@ -22,7 +22,11 @@
           active-text-color="#409EFF"
         >
           <!-- 一级菜单 -->
-          <el-submenu :index="item.id + ''" v-for="item in menuList" :key="item.id">
+          <el-submenu
+            :index="item.id + ''"
+            v-for="item in menuList"
+            :key="item.id"
+          >
             <template slot="title">
               <!-- 图标 -->
               <i :class="iconObj[item.id]"></i>
@@ -31,8 +35,8 @@
             </template>
             <!-- 二级菜单 -->
             <el-menu-item
-			  @click="saveNavStatus('/'+subItem.path)"
-              :index="'/'+subItem.path"
+              @click="saveNavStatus('/' + subItem.path)"
+              :index="'/' + subItem.path"
               v-for="subItem in item.children"
               :key="subItem.id"
             >
@@ -65,14 +69,14 @@ export default {
         102: "iconfont icon-danju",
         145: "iconfont icon-baobiao",
       },
-	  isCollapse: false,
-	  // 被激活的链接地址
-	  activePath: '',   
+      isCollapse: false,
+      // 被激活的链接地址
+      activePath: "",
     };
   },
   created() {
-	this.getMenuList()
-	this.activePath = window.sessionStorage.getItem('activePath')
+    this.getMenuList();
+    this.activePath = window.sessionStorage.getItem("activePath");
   },
   methods: {
     // 退出登录
@@ -90,12 +94,12 @@ export default {
     // 切换菜单的折叠和展开
     toggleCollapse() {
       this.isCollapse = !this.isCollapse;
-	},
-	// 保存链接的激活状态
-	saveNavStatus(activePath){
-		window.sessionStorage.setItem('activePath',activePath)
-		this.activePath = activePath
-	}
+    },
+    // 保存链接的激活状态
+    saveNavStatus(activePath) {
+      window.sessionStorage.setItem("activePath", activePath);
+      this.activePath = activePath;
+    },
   },
 };
 </script>
