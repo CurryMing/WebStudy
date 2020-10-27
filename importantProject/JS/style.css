@@ -10,7 +10,7 @@ body{
     min-height: 90vh;
     height: 100%;
     transition: all 1s ease;
-    background: rgb(20, 20, 20);
+    /* background: rgb(20, 20, 20); */
 }
 
 #div1{
