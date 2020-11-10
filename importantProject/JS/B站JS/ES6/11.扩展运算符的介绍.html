@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 扩展运算符能将【数组】转换为【逗号分隔】的【参数序列
+        const language = ['java','js','c'];
+        function getLanguage(){
+            console.log(arguments);
+        }
+        getLanguage(language);
+        getLanguage(...language);  // 和 rest 参数不同，扩展运算符不放在函数的形参中，而是放在其实参中
+    </script>
+</body>
+</html>

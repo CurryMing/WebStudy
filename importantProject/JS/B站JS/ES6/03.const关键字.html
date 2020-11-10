@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        const SCHOOL = 'SZU';
+        // 1. 一定要赋初始值
+        // const SCHOOL;
+
+        // 2. 一般使用大写
+        const PI = 3.14;
+
+        // 3. 常量值不可修改
+        // SCHOOL = 'SZU';
+
+        // 4. 块级作用域
+        {
+            const PLAYER = 'Curry';
+        }
+        // console.log(PLAYER);
+
+        // 5. 对于对数组和对象的元素进行修改，不算对其常量的修改，只要数组或者对象的地址不改变，就不会报错
+        const LANGUAGE = ['js','c#','java','c'];
+        LANGUAGE.push('c++');
+        // LANGUAGE = []
+    </script>
+</body>
+
+</html>

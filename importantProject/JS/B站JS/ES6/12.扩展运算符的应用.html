@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div></div>
+    <div></div>
+    <div></div>
+    <script>
+        // 1. 数组的合并
+        const oop = ['java', 'c#'];
+        const pop = ['c', 'lua'];
+            // ES5 
+            const language1 = oop.concat(pop);
+            console.log(language1);
+            // ES6
+            const language2 = [...oop,...pop];
+            console.log(language2);
+
+        // 2. 数组的克隆（浅拷贝）
+        const player = ['curry','ming'];
+        const ming = [...player];
+        console.log(ming);
+
+        // 3. 将伪数组转为真正的数组
+        let divs = document.querySelectorAll('div');
+        console.log(divs); // Output: 一个对象
+        const divArr = [...divs];
+        console.log(divArr);
+    </script>
+</body>
+
+</html>

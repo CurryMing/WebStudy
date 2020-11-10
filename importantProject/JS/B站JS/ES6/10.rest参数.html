@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // ES5
+        function getLanguage(){
+            console.log(arguments);
+        }
+        getLanguage('java','js','c#')
+        
+        // ES6 rest参数，是一个数组，提高了使用数组的灵活程度
+        function getPlayer(...args){
+            console.log(args);   // filter some every map
+        }
+        getPlayer('Curry','Ming');
+            // rest 参数必须要放到参数最后
+            function getData(a,b,...args){
+                console.log('a: '+a);
+                console.log('b: '+b);
+                console.log(args);
+            }
+            getData(1,2,3,4,5,6);
+    </script>
+</body>
+</html>

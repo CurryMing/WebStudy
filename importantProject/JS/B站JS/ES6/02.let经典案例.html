@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+        }
+        #box {
+            margin-top: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #box div {
+            width: 100px;
+            height: 50px;
+            margin-right: 10px;
+            border: 1px solid #333744;
+        }
+
+        .color1 {
+            background: linear-gradient(90deg,#70e1f5,#ffd194);
+        }
+        .color2 {
+            background: linear-gradient(90deg,#556270 2%,#FF6B6B 98%);
+        }
+    </style>
+</head>
+
+<body>
+    <div id="main">
+        <h2>点击换颜色</h2>
+        <hr>
+        <div id="box">
+            <div class='item color1'></div>
+            <div class='item color1'></div>
+            <div class='item color1'></div>
+        </div>
+    </div>
+
+    <script>
+        let items = document.getElementsByClassName('item');
+        // var => let
+        for(let i=0;i<items.length;i++){
+            items[i].onclick = function(){
+                if(this.className === 'item color1'){
+                    /* this.classList.remove('color1');
+                    this.classList.add('color2') */
+                    items[i].classList.remove('color1');
+                    items[i].classList.add('color2');
+                }else{
+                    /* this.classList.remove('color2');
+                    this.classList.add('color1') */
+                    items[i].classList.remove('color2');
+                    items[i].classList.add('color1');
+                }
+            }
+        }
+        
+    </script>
+</body>
+
+</html>

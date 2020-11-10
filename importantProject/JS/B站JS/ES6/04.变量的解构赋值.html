@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 1. 数组的解构
+        const LANGUAGE = ['lua','java','c'];
+        let [lua,java,c] = LANGUAGE;
+        console.log(lua);
+        console.log(java);
+        console.log(c);
+
+        // 2. 对象的解构
+        const CURRY = {
+            name: 'curry',
+            skill: 'shoot',
+            shoot: function(){
+                console.log('shoot! ... bang!!');
+            }
+        }
+        // 别名（name:n）
+        let {name:n,skill,shoot} = CURRY;
+        console.log(n + " " + skill);
+        shoot();
+    </script>
+</body>
+</html>

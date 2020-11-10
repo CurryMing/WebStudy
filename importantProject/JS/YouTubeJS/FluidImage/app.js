@@ -10,7 +10,6 @@ window.onload = function(){
             original.classList.add("open");
             //
             const originalSrc = element.getAttribute("src");
-            //console.log(originalSrc);
             original.src = originalSrc;
             const altText = element.alt;
             imgText.textContent = altText;

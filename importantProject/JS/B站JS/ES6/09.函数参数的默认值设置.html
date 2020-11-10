@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function add(a,b,c=10){
+            return a+b+c;
+        }
+        console.log('不使用默认值：'+add(1,2,3));
+        console.log('使用默认值：'+add(1,2));
+
+        // 与解构赋值结合,使属性用起来更方便
+        function connect({host='127.0.0.1',username,password,port}){
+            console.log('host: '+host);
+            console.log('username: '+username);
+            console.log('password: '+password);
+            console.log('port: '+port);
+        }
+        connect({
+            username: 'root',
+            password: 'root',
+            port: 3306
+        })
+    </script>
+</body>
+</html>

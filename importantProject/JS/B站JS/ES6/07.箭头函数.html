@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let fun = (a,b) => {
+            return a + b;
+        }
+        let result = fun(1,2);
+        console.log(result);
+
+        // 1. this是静态的，this 始终指向函数声明时所在作用域下的 this 的值
+        function getName1(){
+            console.log(this.name);
+        }
+        let getName2 = () => {
+            console.log(this.name);
+        }
+        window.name = 'ming';
+        getName1();
+        getName2();
+
+        const PLAYER = {
+            name: 'curry'
+        }
+        // call 方法可以改变方法内部 this 的值
+        getName1.call(PLAYER);
+        getName2.call(PLAYER);
+
+        // 2. 不能作为构造函数实例化对象
+        let Person = (name,age) => {
+            this.name = name;
+            this.age = age;
+        }
+        // let curry = new Person('curry',21);
+        // console.log(curry);
+
+        // 3. 不能使用 arguments 变量
+        let fn = () => {
+            console.log(arguments);
+        }
+        // fn(1,2,3)
+
+        // 4. 简写
+            // 1. 当形参有且只有一个时，可以省略小括号
+            let add = n => {
+                return n+n;
+            }
+            console.log(add(9));
+            // 2. 当方法体只有一条语句时，可以省略花括号,此时 return 必须省略
+            //    此时语句的执行结果就是函数的返回值
+            let pow = n => n*n;
+            console.log(pow(9));
+    </script>
+</body>
+</html>

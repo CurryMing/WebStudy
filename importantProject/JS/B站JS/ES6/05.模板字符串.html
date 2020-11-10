@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div></div>
+    <script>
+        let str = `str`;
+        console.log(str);
+
+        // 1. 支持换行
+        let div = document.querySelector('div');
+        div.innerHTML = `
+        <ul>
+            <li>lua</li>
+            <li>java</li>
+            <li>c#</li>
+            <li>c</li>
+            <li>c++</li>
+        </ul>`
+
+        // 2. 变量直接插入
+        const FAVORITE = 'js';
+        let mf = `${FAVORITE}是我最喜欢的语言~`
+        console.log(mf);
+    </script>
+</body>
+</html>

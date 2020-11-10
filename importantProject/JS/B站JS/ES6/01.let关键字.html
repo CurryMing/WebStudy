@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+      // 1. 不能重复声明
+      let star = "curry";
+      //let star = 'ming'
+
+      // 2. 块作用域
+      if (true) {
+        let hero = "ming";
+      }
+      //console.log(hero);
+
+      // 3. 不存在变量提升
+      //console.log(js);
+      let js = "javascript";
+
+      // 4. 不影响作用域链
+      if (true) {
+        let vue = "Vue";
+        function fun() {
+          console.log(vue);
+        }
+        fun();
+      }
+    </script>
+  </head>
+  <body></body>
+</html>

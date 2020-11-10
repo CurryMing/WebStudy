@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 70vh;
+        }
+        #div1 {
+            width: 100px;
+            height: 100px;
+            background-color: #333744;
+            transition: 0.5s;
+            margin-right: 20px;
+        }
+        #div2 {
+            width: 100px;
+            height: 100px;
+            background-color: #333744;
+            transition: 0.5s;
+        }
+    </style>
+</head>
+<body>
+    <div id="div1"></div>
+    <div id="div2"></div>
+    <script>
+        // 需求-1：点击 div ,2秒钟之后变成粉色
+        let div1 = document.getElementById('div1')
+        div1.addEventListener('click',function(){
+            let _this = this; // 保存div的this
+            setTimeout(function(){
+                console.log(this); // Output: Window
+                // this.style.background = '#FF6B6B';//error
+                _this.style.background = "#FF6B6B";
+            },1000)
+        })
+        let div2 = document.getElementById('div2')
+        div2.addEventListener('click',function(){
+            // setTimeout是在div2的作用域下，所以this是div2
+            setTimeout(() => {
+                console.log(this); // Output: div2
+                this.style.background = '#FF6B6B';
+            },1000)
+        })
+
+        // 需求-1：从数组中返回偶数元素
+        const arr = [1,2,3,4,5,6];
+        const result1 = arr.filter(function(item){
+            if(item % 2 === 0) return true;
+            else return false;
+        })
+        const result2 = arr.filter(item => item % 2 !== 0);
+        console.log('result1: ' + result1);
+        console.log('result2: ' + result2);
+
+        window.name = 'ming';
+        // 箭头函数适合与 this 无关的回调，定时器，数组的方法回调
+        // 箭头函数不适合与 this 有关的回调，事件回调，对象方法
+        const curry = {
+            name: 'curry',
+            getName: () => {
+                return this.name;
+            }
+        }
+        console.log(curry.getName());
+    </script>
+</body>
+</html>
