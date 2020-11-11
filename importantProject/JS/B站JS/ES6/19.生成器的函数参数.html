@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 声明生成器
+        function * gen(arg){
+            console.log(arg); // Output: ZERO
+            let one = yield 1;
+            console.log(one); // Output: ONE
+            let two = yield 2;
+            console.log(two); // Output: TWO
+            let three = yield 3;
+            console.log(three); // Output: THREE
+        }
+        // 获取迭代器对象
+        let iterator = gen('ZERO');
+        console.log(iterator.next());
+        // next 方法可以接收实参
+        console.log(iterator.next('ONE'));
+        console.log(iterator.next('TWO'));
+        console.log(iterator.next('THREE'));
+    </script>
+</body>
+</html>

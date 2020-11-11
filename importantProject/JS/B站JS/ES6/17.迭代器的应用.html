@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        const language = {
+            name: 'oop',
+            members: ['js','java','c#'],
+            [Symbol.iterator](){
+                let i = 0;
+                let _this = this;
+                return {
+                    next(){
+                        if(i < _this.members.length){
+                            const result = {value: _this.members[i],done: false}
+                            i++;
+                            return result
+                        }else{
+                            return {value: undefined,done: true}
+                        }
+                    }
+                }
+            }
+        }
+        // 遍历这个对象
+        for(let l of language){
+            console.log(l);
+        }
+    </script>
+</body>
+</html>

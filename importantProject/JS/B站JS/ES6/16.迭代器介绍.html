@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        const language = ['js','java','c'];
+        for(let l of language){
+            console.log(l);
+        }
+        let iterator = language[Symbol.iterator]();
+        console.log(iterator.next()); // Output: {value: "js", done: false}
+        console.log(iterator.next()); // Output: {value: "java", done: false}
+        console.log(iterator.next()); // Output: {value: "c", done: false}
+        console.log(iterator.next()); // Output: {value: undefined, done: true}
+    </script>
+</body>
+</html>

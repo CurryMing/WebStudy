@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 1. 创建Symbol
+        let s1 = Symbol();
+        console.log(s1,typeof s1);
+
+        // 2. 比较
+        let s2 = Symbol('Curry');
+        let s3 = Symbol('Curry');
+        console.log(s2 === s3);
+
+        // 3. Symbol.for 创建
+        let s4 = Symbol.for('Ming');
+        let s5 = Symbol.for('Ming');
+        console.log(s4 === s5);
+
+        // 4. 不能与其他数据进行运算
+        /* let result1 = s1 + 100;
+        let result2 = s1 > 100;
+        let result3 = s1 + s1; */ 
+
+        // JavaScript 的七种数据类型 USONB
+        // u undefined
+        // s string Symbol
+        // o object
+        // n null number
+        // boolean
+    </script>
+</body>
+</html>

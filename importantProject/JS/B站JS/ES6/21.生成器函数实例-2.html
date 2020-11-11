@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function getUsers(){
+            setTimeout(() => {
+                let data = '用户数据';
+                iterator.next(data);
+            },1000)
+        }
+        function getOrders(){
+            setTimeout(() => {
+                let data = '订单数据';
+                iterator.next(data);
+            },1000)
+        }
+        function getGoods(){
+            setTimeout(() => {
+                let data = '商品数据';
+                iterator.next(data);
+            },1000)
+        }
+        function * gen(){
+            // 第二次调用next(data),实参将会作为第一个yield语句的返回结果
+            let users = yield getUsers(); // 第13行代码执行的 next(data)
+            console.log(users);
+            let orders = yield getOrders();
+            console.log(orders);
+            let goods = yield getGoods();
+            console.log(goods);
+        }
+        let iterator = gen();
+        iterator.next();
+    </script>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 生成器函数：一种异步编程解决方案
+        function * gen(){
+            console.log('111');
+            yield 'part01';
+            console.log('222');
+            yield 'part02';
+            console.log('333');
+            yield 'part03';
+            console.log('444');
+        }
+        let iterator = gen();
+        /*console.log(iterator.next());
+        console.log(iterator.next());
+        console.log(iterator.next());
+        console.log(iterator.next());*/
+        // 遍历
+        for(let v of gen()){
+            console.log(v);
+        }
+    </script>
+</body>
+</html>

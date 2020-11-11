@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let game = {
+            name: '俄罗斯方块',
+            up(){
+                console.log('我可以改变形状');
+            },
+            down(){
+                console.log('我可以快速下降');
+            }
+        }
+        
+        let methods = {
+            up: Symbol(),
+            down: Symbol()
+        }
+        game[methods.up] = function(){
+            console.log('我可以改变形状');
+        }
+        game[methods.down] = function(){
+            console.log('我可以快速下降');
+        }
+        console.log(game);
+
+        let game2 = {
+            name: '狼人杀',
+            [Symbol('say')]: function(){
+                console.log('我可以发言');
+            }
+        }
+        console.log(game2);
+    </script>
+</body>
+</html>
