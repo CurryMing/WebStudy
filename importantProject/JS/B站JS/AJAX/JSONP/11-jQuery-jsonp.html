@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            background-color: rgb(34, 34, 34);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 90vh;
+        }
+        #result {
+            width: 300px;
+            height: 50px;
+            border: 2px dashed #eecc33;
+            color: aliceblue;
+            margin-left: 10px;
+            text-align: center;
+            line-height: 50px;
+        }
+    </style>
+    <script src="./jquery-1.11.3.min.js"></script>
+</head>
+<body>
+    <button>点击发送请求</button>
+    <div id="result"></div>
+    <script>
+        $('button').eq(0).click(function(){
+            $.getJSON('http://127.0.0.1:8000/jQuery-jsonp-server?callback=?',function(data){
+                $('#result').html(`名称：${data.name}&nbsp&nbsp&nbsp&nbsp城市：${data.city}`);
+            });
+        })
+    </script>
+</body>
+</html>

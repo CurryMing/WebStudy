@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AJAX POST 请求</title>
+    <style>
+        #result {
+            width: 200px;
+            height: 100px;
+            border: 1px solid #90b;
+        }
+    </style>
+</head>
+<body>
+    <!-- 把服务端返回的响应体结果呈现在div中 -->
+    <div id="result"></div>
+
+    <script>
+        let result = document.getElementById('result');
+        // 绑定事件
+        result.onmouseenter = function(){
+            // 1、创建对象
+            const xhr = new XMLHttpRequest();
+            // 2、初始化 设置请求方法和url
+            xhr.open('POST','http://127.0.0.1:8000/server');
+            // 设置请求头
+            xhr.setRequestHeader('Content-Type','application/x-www-form-urlencoded')
+            // 3、发送
+            // xhr.send('a=100&b=200&c=300');
+            xhr.send('a:100&b:200&c:300');
+            // 4、事件绑定 处理服务端返回的结果
+                // readystate 是xhr对象中的属性，
+                // 表示状态 0（未初始化） 1（open调用完毕） 2（send调用完毕） 3（服务端返回部分结果） 4（返回所有结果）
+            xhr.onreadystatechange = function(){
+                // 判断（服务端返回了所有结果）
+                if(xhr.readyState === 4){
+                    // 判断响应状态码（200 404 403 401 500）
+                    // 2 开头的都表示成功
+                    if(xhr.status >= 200 && xhr.status < 300){
+                        // 处理结果 行 头 空行 体
+                        // 1、响应行
+                        /* console.log(xhr.status); // 状态码
+                        console.log(xhr.statusText); // 状态字符串
+                        console.log(xhr.getAllResponseHeaders); // 所有的响应头
+                        console.log(xhr.response); // 响应体 */
+                        result.innerHTML = xhr.responseText;
+                    }else{
+
+                    }
+                }
+            }
+
+        }
+    </script>
+</body>
+</html>

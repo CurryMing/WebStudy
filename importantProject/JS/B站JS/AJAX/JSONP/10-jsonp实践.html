@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            background-color: rgb(34, 34, 34);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 90vh;
+        }
+        input[type = 'text'] {
+            outline: none;
+        }
+        p {
+            color: aliceblue;
+            margin-left: 10px;
+            text-align: center;
+            line-height: 50px;
+        }
+    </style>
+</head>
+<body>
+    <input type="text" id="username">
+    <p></p>
+    <script>
+        let input = document.getElementById('username');
+        let p = document.querySelector('p');
+        
+        function handle(data) {
+            input.style.border = "2px solid hotpink";
+            p.innerHTML = data.msg;
+        }
+
+        input.onblur = function(){
+            let username = this.value;
+            let script = document.createElement('script');
+            script.src = "http://127.0.0.1:8000/check-username";
+            document.body.appendChild(script);
+        }
+    </script>
+</body>
+</html>

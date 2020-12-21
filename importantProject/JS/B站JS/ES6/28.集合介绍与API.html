@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 1.声明一个Set
+        let s1 = new Set();
+        console.log(s1,typeof s1);
+        let s2 = new Set(["js","java","vue","js"]);
+        console.log(s2);
+        console.log(s2.size);
+        s2.add("jq");
+        console.log(s2);
+        s2.delete("java");
+        console.log(s2);
+        console.log(s2.has("jq"));
+        s2.clear();
+        console.log(s2);
+    </script>
+</body>
+</html>

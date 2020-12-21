@@ -58,10 +58,11 @@ h2{
 }
 .row input:focus + label{
     transform: translateX(calc(-100% - 2.5rem)); /* 移动相当于自己宽度的距离 */
-    color: #2e3131;
+    /*color: #2e3131;*/
+    color: rgba(255,255,255,1);
 }
 
 /* 没有聚焦 且 栏位有文字 */
 input:not(:focus):not(:placeholder-shown) + label{
-    color: rgba(0, 0, 0, 0);
+    color: rgba(0, 0, 255, 1);
 }

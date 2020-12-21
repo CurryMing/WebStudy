@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        const p = new Promise((resolve, reject) => {
+            setTimeout(() => {
+                // resolve("用户数据");
+                reject("出错了");
+            }, 1000)
+        })
+        p.then(function (value) {
+            console.log(value);
+        }, function (reason) {
+            console.warn(reason);
+        })
+    </script>
+</body>
+
+</html>
