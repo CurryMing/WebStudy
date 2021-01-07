@@ -44,7 +44,7 @@
                         console.log(xhr.statusText); // 状态字符串
                         console.log(xhr.getAllResponseHeaders); // 所有的响应头
                         console.log(xhr.response); // 响应体 */
-                        resObj = JSON.parse(xhr.responseText);
+                        let resObj = JSON.parse(xhr.responseText);
                         console.log(resObj);
                         result.innerHTML = resObj.a;
                     }else{

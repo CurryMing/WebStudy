@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,29 +13,38 @@
         }
     </style>
 </head>
+
 <body>
     <button>发送请求</button>
     <button>取消发送</button>
-
+    <div id="result"></div>
     <script>
         let btns = document.querySelectorAll('button');
         // 绑定事件
         let xhr = null;
 
-        btns[0].onclick = function(){
+        btns[0].onclick = function () {
             // 1、创建对象
             xhr = new XMLHttpRequest();
-                // 设置响应体数据的类型
-                xhr.responseType = 'json';
+            // 设置响应体数据的类型
+            xhr.responseType = 'json'; // 不用再转换 —— 【JSON.parse(xhr.response)】
 
             // 2、初始化 设置请求方法和url
-            xhr.open('GET','http://127.0.0.1:8000/delay');
+            xhr.open('GET', 'http://127.0.0.1:8000/delay');
             // 3、发送
             xhr.send();
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState === 4) {
+                    if (xhr.status >= 200 && xhr.status < 300) {
+                        document.getElementById('result').innerHTML = xhr.response.name;
+                    }
+                }
+            }
         }
-        btns[1].onclick = function(){
+        btns[1].onclick = function () {
             xhr.abort();
         }
     </script>
 </body>
+
 </html>

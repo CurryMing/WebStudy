@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #8db596;
+        }
+
+        .container {
+            width: 500px;
+            height: 200px;
+            margin: 200px auto;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            width: 500px;
+            height: 150px;
+        }
+
+        label {
+            font-size: 32px;
+            color: aliceblue;
+            margin-bottom: 25px;
+        }
+
+        .form-control {
+            width: 300px;
+            height: 50px;
+            border: none;
+            outline: none;
+            border-radius: 10px;
+            font-size: 24px;
+            padding: 8px;
+            background-color: #cfdac8;
+        }
+
+        #inputBox {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #addEmail {
+            outline: none;
+            border: none;
+            width: 60px;
+            height: 40px;
+            border-radius: 10px;
+            margin-left: 15px;
+            cursor: pointer;
+            font-size: 18px;
+        }
+
+        #info {
+            font-size: 16px;
+            height: 50px;
+            width: 500px;
+            text-align: center;
+            line-height: 50px;
+        }
+
+        .bg-danger {
+            color: #fff;
+            background-color: #c05555;
+        }
+
+        .bg-success {
+            background-color: #cfdac8;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="form-group">
+            <label>邮箱地址</label>
+            <div id="inputBox">
+                <input type="email" class="form-control" placeholder="请输入邮箱地址..." id="email">
+                <button id="addEmail">注册</button>
+            </div>
+        </div>
+        <!-- 服务器返回错误，p标签加上bg-danger这个类名，否则就加上bg-success -->
+        <p id="info"></p>
+    </div>
+
+    <script src="./ajax.js"></script>
+    <script>
+        let emailInput = document.getElementById('email');
+        let info = document.getElementById('info');
+        let addBtn = document.getElementById('addEmail');
+        addBtn.onclick = function () {
+            let emailValue = emailInput.value;
+            ajax({
+                url: '/verifyEmailAdress',
+                data: {
+                    email: emailValue
+                },
+                success: function (res) {
+                    ajax({
+                        url: '/addEmail',
+                        data: {
+                            email: emailValue
+                        },
+                        success: function (res) {
+                            info.innerHTML = res.message
+                            info.className = 'bg-success'
+                        },
+                        error: function (res) {
+                            info.innerHTML = res.message
+                            info.className = 'bg-danger'
+                        }
+                    })
+                },
+                error: function (res) {
+                    info.innerHTML = res.message
+                    info.className = 'bg-danger'
+                }
+            })
+        }
+        emailInput.onblur = function () {
+            let emailValue = this.value;
+            let reg = /^[A-Za-z\d]+([-_.][A-Za-z\d]+)*@([A-Za-z\d]+[-.])+[A-Za-z\d]{2,4}$/;
+            if (!reg.test(emailValue)) {
+                info.innerHTML = '请输入符合规则的邮箱地址'
+                info.className = 'bg-danger'
+                return
+            }
+            ajax({
+                url: '/verifyEmailAdress',
+                data: {
+                    email: emailValue
+                },
+                success: function (res) {
+                    info.innerHTML = res.message
+                    info.className = 'bg-success'
+                },
+                error: function (res) {
+                    info.innerHTML = res.message
+                    info.className = 'bg-danger'
+                }
+            })
+        }
+    </script>
+</body>
+
+</html>
+<!-- 1739550679@qq.com -->

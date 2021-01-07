@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,6 +13,7 @@
         }
     </style>
 </head>
+
 <body>
     <!-- 把服务端返回的响应体结果呈现在div中 -->
     <div id="result"></div>
@@ -19,34 +21,34 @@
     <script>
         let result = document.getElementById('result');
         // 绑定事件
-        window.onkeydown = function(){
+        window.onkeydown = function () {
             // 1、创建对象
             const xhr = new XMLHttpRequest();
-                // 设置响应体数据的类型
-                xhr.responseType = 'json';
-            
+            // 设置响应体数据的类型
+            xhr.responseType = 'json';
+
             xhr.timeout = 2000;
-            xhr.ontimeout = function(){
+            xhr.ontimeout = function () {
                 alert('请求超时！');
             }
 
-            xhr.onerror = function(){
+            xhr.onerror = function () {
                 alert('你的网络似乎出现了问题！');
             }
 
             // 2、初始化 设置请求方法和url
-            xhr.open('GET','http://127.0.0.1:8000/delay');
+            xhr.open('GET', 'http://127.0.0.1:8000/delay');
             // 3、发送
             xhr.send();
             // 4、事件绑定 处理服务端返回的结果
-                // readystate 是xhr对象中的属性，
-                // 表示状态 0（未初始化） 1（open调用完毕） 2（send调用完毕） 3（服务端返回部分结果） 4（返回所有结果）
-            xhr.onreadystatechange = function(){
+            // readystate 是xhr对象中的属性，
+            // 表示状态 0（未初始化） 1（open调用完毕） 2（send调用完毕） 3（服务端返回部分结果） 4（返回所有结果）
+            xhr.onreadystatechange = function () {
                 // 判断（服务端返回了所有结果）
-                if(xhr.readyState === 4){
+                if (xhr.readyState === 4) {
                     // 判断响应状态码（200 404 403 401 500）
                     // 2 开头的都表示成功
-                    if(xhr.status >= 200 && xhr.status < 300){
+                    if (xhr.status >= 200 && xhr.status < 300) {
                         // 处理结果 行 头 空行 体
                         // 1、响应行
                         /* console.log(xhr.status); // 状态码
@@ -54,12 +56,12 @@
                         console.log(xhr.getAllResponseHeaders); // 所有的响应头
                         console.log(xhr.response); // 响应体 */
                         // 1、手动对数据转换
-                            /* let data = JSON.parse(xhr.responseText);
-                            result.innerHTML = data.name; */
-                        
+                        /* let data = JSON.parse(xhr.responseText);
+                        result.innerHTML = data.name; */
+
                         // 2、自动转换
                         result.innerHTML = xhr.response.name;
-                    }else{
+                    } else {
 
                     }
                 }
@@ -68,4 +70,5 @@
         }
     </script>
 </body>
+
 </html>

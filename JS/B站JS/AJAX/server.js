@@ -10,12 +10,13 @@ const app = express();
 // GET请求
 app.get('/server',(request,response) => {
     // 设置响应头     // 设置允许跨域
+    // 因为在【Open with Live Server】打开的html文件的开头地址是【http://127.0.0.1:5500/】
     response.setHeader('Access-Control-Allow-Origin','*');
     // 设置响应体
     response.send(request.query);
 });
 
-// 获取 json
+// GET请求 获取 json
 app.get('/json-server',(request,response) => {
     // 设置响应头  // 设置允许跨域
     response.setHeader('Access-Control-Allow-Origin','*');
@@ -25,7 +26,7 @@ app.get('/json-server',(request,response) => {
     }
     let str = JSON.stringify(data);
     // 设置响应体
-    response.send(str);
+    response.send({name: 'oMing'});
 });
 
 // ie 缓存
@@ -41,7 +42,7 @@ app.get('/ie',(request,response) => {
     response.send(str);
 });
 
-// 延时响应
+// 延时响应（取消请求、重复请求）
 app.get('/delay',(request,response) => {
     // 设置响应头  // 设置允许跨域
     response.setHeader('Access-Control-Allow-Origin','*');
@@ -53,7 +54,7 @@ app.get('/delay',(request,response) => {
     // 设置响应体
     setTimeout(() => {
         response.send(str);
-    },5000);
+    },2000);
 });
 
 // POST请求
