@@ -13,6 +13,8 @@
         }
         button{
             outline: none;
+            border: none;
+            margin-bottom: 10px;
         }
         .login-com,.register-com{
             border: 1px solid black;
@@ -25,6 +27,10 @@
             border-radius: 10px;
             width: 150px;
             height: 150px;
+            margin: auto;
+        }
+        .omingBtn,.vueBtn{
+            margin-left: 50px;
         }
     </style>
 </head>
@@ -38,8 +44,8 @@
     <template id="login">
         <div class="login-com">
             <h1>登录界面</h1>
-            <router-link to="/login/oming" tag="button">oMing</router-link>
-            <router-link to="/login/vue" tag="button">Vue</router-link>     
+            <router-link to="/login/oming" tag="button" class="omingBtn">oMing</router-link>
+            <router-link to="/login/vue" tag="button" class="vueBtn">Vue</router-link>     
             <router-view></router-view>
         </div>
     </template>
@@ -52,12 +58,12 @@
 
     <template id="oming">
         <div class="oming">
-            <h3>oMing oooooo</h3>
+            <h3>oMing ooooo</h3>
         </div>
     </template>
     <template id="vue">
         <div class="vue">
-            <h3>Vue vvvvvvvvv</h3>
+            <h3>Vue vvvvv</h3>
         </div>
     </template>
 

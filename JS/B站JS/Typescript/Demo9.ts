@@ -16,7 +16,7 @@ const girl = {
         return "欢迎光临 ，红浪漫洗浴！！";
     },
     teach() {
-        return "我是一个老师";
+        return "老师";
     },
 };
 class XiaoJieJie implements Girl {
@@ -38,7 +38,7 @@ const getResume = (girl: Teacher) => {
     console.log(girl.name + "年龄是：" + girl.age);
     console.log(girl.name + "胸围是：" + girl.bust);
     girl.waistline && console.log(girl.name + "腰围是：" + girl.waistline);
-    girl.sex && console.log(girl.name + "性别是：" + girl.sex);
+    girl.sex && console.log(girl.name + "性别是：" + girl.sex + "\n职业是：" + girl.teach());
 };
 screenResume(girl);
 getResume(girl);

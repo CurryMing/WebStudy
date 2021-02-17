@@ -1,0 +1,15 @@
+#div1 {
+  width: 100px;
+  height: 100px;
+  background: green;
+  position: absolute;
+}
+#div2 {
+  width: 100px;
+  height: 100px;
+  background: yellow;
+  position: absolute;
+  left: 300px;
+  top: 200px;
+  z-index: -1;
+}
