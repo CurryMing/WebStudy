@@ -14,24 +14,34 @@
     <template id="father">
         <div>
             <son>
-                <!-- <div slot="one">我是追加数据1</div>
+                <div slot="one">我是追加数据1</div>
                 <div slot="one">我是追加数据1.1</div>
-                <div slot="two">我是追加数据2</div> -->
-                <!-- 推荐 -->
-                <!-- <template #three="ref1">
-                    <div>我是追加数据3 --- {{ ref1.names }}</div>
-                    <li v-for="name in ref1.names" :key="name">{{ name }}</li>
+                <div slot="two">我是追加数据2</div>
+
+                <!-- v-slot -->
+                <!-- (#default == v-slot:default="scope") default用于匿名插槽-->
+                <!-- <template #default="scope">
+                    <div>names --- {{ scope.names }}</div>
+                    <li v-for="(name,i) in scope.names" :key="i">{{ i }}</li>
                 </template> -->
-                <!-- 不推荐 v-slot:default-->
-                <template v-slot:default="ref2">
-                    <div>我是追加数据5 --- {{ ref2.nums }}</div>
-                    <li v-for="num in ref2.nums">{{ num }}</li>
+                <!-- 推荐 具名的v-slot -->
+                <template #three="scope">
+                    <div>names --- {{ scope.names }}</div>
+                    <li v-for="(name,i) in scope.names" :key="i">{{ i }}</li>
                 </template>
-                <!-- 不推荐 -->
-                <!-- <template slot-scope="ref">
-                    <div>我是追加数据4 --- {{ ref.ids }}</div>
-                    <li v-for="id in ref.ids" :key="id">{{ id }}</li>
+
+                <!-- 不推荐 v-slot:default-->
+                <!-- <template v-slot:default="scope">
+                    <div>nums --- {{ scope.nums }}</div>
+                    <li v-for="(num,i) in scope.nums" :key="i">{{ i }}</li>
                 </template> -->
+
+                <!-- 不推荐 -->
+                <!-- slot-scope="scope"的作用：接收子组件暴露的数据 -->
+                <template slot-scope="scope">
+                    <div>ids --- {{ scope.ids }}</div>
+                    <li v-for="(id,i) in scope.ids" :key="i">{{ i }}</li>
+                </template>
             </son>
         </div>
     </template>
@@ -39,11 +49,19 @@
     <template id="son">
         <div>
             <div>我是头部</div>
+
+            <!-- 具名插槽 -->
             <slot name="one">我是插槽1</slot>
             <slot name="two">我是插槽2</slot>
+
+            <!-- v-slot -->
             <slot name="three" v-bind:names="names">我是插槽3</slot>
+
+            <!-- 作用域插槽 -->
+            <!-- v-bind:ids="ids"的作用：将当前子组件的ids数据暴露给父组件 -->
             <slot v-bind:ids="ids">我是插槽4</slot>
-            <slot :nums="nums">我是插槽5</slot>
+            <!-- <slot :nums="nums">我是插槽5</slot> -->
+
             <div>我是尾部</div>
         </div>
     </template>
