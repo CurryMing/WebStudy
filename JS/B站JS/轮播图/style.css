@@ -11,11 +11,13 @@ body{
     position: relative;
     margin: 100px auto;
     /* transform: translate(-50%,0%); */
-    border: 5px dashed darkcyan;
+    border: 1px dashed darkcyan;
+    border-radius: 15px;
     width: 220px;
     height: 516px;
     overflow: hidden;
     user-select: none;
+    box-shadow: 2px 2px 10px rgba(255, 255, 255, 0.25);
 }
 
 /* 装图片作滚动的盒子 */
