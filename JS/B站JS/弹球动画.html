@@ -28,7 +28,7 @@
 	<div id="main-box"></div>
 
 	<script>
-		var colors = ['red', 'black', 'yellow', 'blue', 'hotpink']
+		var colors = ['red', 'black', 'blue', 'hotpink']
 		let main_box = document.getElementById("main-box");
 		document.getElementById("btn").onclick = function () {
 			var ball = document.createElement("div");
@@ -41,8 +41,15 @@
 			let left = main_box.clientWidth / 2 - ball.offsetWidth / 2;
 			let top = main_box.clientHeight / 2 - ball.offsetHeight / 2;
 
+			console.log("main_box.clientWidth: "+main_box.clientWidth)
+			console.log("ball.offsetWidth: "+ball.offsetWidth)
+			
+
 			ball.style.left = left + "px";
 			ball.style.top = top + "px";
+
+			var boxStyle = window.getComputedStyle(ball, null)
+			console.log(boxStyle.left + ' ' + boxStyle.top)
 
 			var x = 1;
 			var y = 1;
@@ -60,7 +67,7 @@
 
 				ball.style.left = left + "px";
 				ball.style.top = top + "px";
-			}, 5);
+			}, 1);
 		};
 	</script>
 </body>
